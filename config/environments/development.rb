@@ -13,6 +13,11 @@ Superlocal::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  # Set default host for action_mailer
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 

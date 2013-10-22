@@ -15,6 +15,7 @@ gem 'devise'
 
 group :development do
 	gem 'sqlite3'
+	gem 'mailcatcher'
 end
 
 group :development, :test do
