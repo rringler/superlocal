@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131003015546) do
+ActiveRecord::Schema.define(version: 20131023032211) do
+
+  create_table "boards", force: true do |t|
+    t.string   "title",       null: false
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "post_id",    null: false
+    t.text     "text",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "board_id",   null: false
+    t.string   "title",      null: false
+    t.string   "link"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["board_id"], name: "index_posts_on_board_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
@@ -37,5 +65,13 @@ ActiveRecord::Schema.define(version: 20131003015546) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

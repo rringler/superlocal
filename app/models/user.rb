@@ -8,8 +8,13 @@ class User < ActiveRecord::Base
          :rememberable,
          :trackable,
          :validatable
+
+  has_many :posts
+  has_many :comments
+  has_many :votes
 				 
 	attr_accessor :login
+
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
