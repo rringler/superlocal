@@ -18,8 +18,7 @@ class BoardsController < ApplicationController
 	end
 
 	def find
-		@board = Board.find(params[:address])
-		redirect_to @board
+		@address = Address.new(params[:address])
 	end
 
 	def edit
