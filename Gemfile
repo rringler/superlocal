@@ -12,6 +12,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'figaro'
 gem 'devise'
+gem 'will_paginate'
+gem 'acts_as_commentable_with_threading', github: 'petergoldstein/acts_as_commentable_with_threading',
+																					branch: 'feature/rails_4'
 
 group :development do
 	gem 'sqlite3'

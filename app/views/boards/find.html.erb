@@ -1,3 +1,34 @@
-<h2>Find</h2>
+<h2>This locale does not exist.  Would you like to create it?</h2>
 
-<p><%= @address.to_xml %></p>
+<%= form_for @board, method: :post do |f| %>
+
+	<%= f.hidden_field :slug, value: @slug %>
+
+	<div class="row">
+		<div class="col-sm-10">
+			<div class="form-group">
+				<%= f.text_field :title,
+												 class: "form-control",
+												 placeholder: "Title",
+												 autofocus: true %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-10">
+			<div class="form-group">
+				<%= f.text_field :description,
+												 class: "form-control",
+												 placeholder: "Description" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Create</button>
+			</div>
+		</div>
+	</div>
+<% end %>

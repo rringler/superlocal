@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
-	def new
-		@board = Board.new
-	end
+	# def new
+	# 	@board = Board.new
+	# end
 
 	def create
 		@board = Board.new(board_params)
@@ -14,11 +14,16 @@ class BoardsController < ApplicationController
 	end
 
 	def show
-		@board = Board.find(params[:id])
+		@board = Board.where(id: params[:id]).first
+		@posts = @board.posts.paginate(page: 1, per_page: 20)
 	end
 
 	def find
 		@address = Address.new(params[:address])
+		#@slug    = AddressService.new(@address).slug
+		@slug 	 = 'test_value'
+		@board   = Board.where(slug: @slug).first_or_initialize
+		redirect_to @board unless @board.new_record?
 	end
 
 	def edit
@@ -30,6 +35,6 @@ class BoardsController < ApplicationController
 
 	private
 	def board_params
-		params.require(:board).permit(:title, :description)
+		params.require(:board).permit(:title, :description, :slug)
 	end
 end

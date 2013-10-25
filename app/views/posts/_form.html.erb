@@ -1,0 +1,34 @@
+<%= form_for @post, url: board_posts_path(@board.id), method: :post do |f| %>
+  <% if @post.errors.any? %>
+  	<div id="error_explanation">
+  		<h3><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h3>
+
+  		<ul>
+				<% @post.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :board_id, value: params[:board_id] %>
+
+  <div class="form-group">
+  	<%= f.label :title %>
+  	<%= f.text_field :title, autofocus: true,
+  													 class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+  	<%= f.label :link %>
+	  <%= f.text_field :link, class: "form-control" %>
+	</div>
+
+  <div class="form-group">
+    <%= f.label :text %>
+    <%= f.text_field :text, class: "form-control" %>
+  </div>
+
+  <button type="submit" class="btn btn-default">Create</button>
+<% end %>

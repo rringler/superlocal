@@ -1,3 +1,20 @@
-<h2><%= @board.title %></h2>
+<div class="jumbotron">
+	<h2><%= @board.title %></h2>
+	<h4><%= @board.description %></h4>
+</div>
 
-<p><%= @board.description %></p>
+<hr />
+
+<%= link_to 'Create new post', new_board_post_path(@board), class: 'btn btn-primary' %>
+
+<hr />
+
+<h4>Recent posts</h4>
+<div class="well">
+<% if @posts.any? %>
+	<%= render partial: 'post', collection: @posts %>
+<% else %>
+	<p>We ain't found shit.</p>
+<% end %>
+
+<%= will_paginate @posts %>

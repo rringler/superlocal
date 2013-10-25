@@ -1,8 +1,12 @@
 Superlocal::Application.routes.draw do
 	devise_for :users
 
+  concern :commentable do
+    resources :comments
+  end
+
 	resources :boards do
-		resources :posts
+		resources :posts, concerns: :commentable
 	end
 
   root  'pages#home'
