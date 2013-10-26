@@ -4,7 +4,7 @@
 
 <%= form_tag find_board_path, method: :post do |f| %>
 	<div class="row">
-		<div class="col-sm-10 col-sm-offset-1">
+		<div class="col-sm-8 col-sm-offset-2">
 			<div class="form-group">
 				<%= text_field_tag "address[address2]",
 													 nil, 
@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-5 col-sm-offset-1">
+		<div class="col-sm-4 col-sm-offset-2">
 			<div class="form-group">
 				<%= text_field_tag "address[city]",
 													 nil,
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 
-		<div class="col-sm-3">
+		<div class="col-sm-2">
 			<div class="form-group">
 				<%= text_field_tag "address[zip5]",
 													 nil,
@@ -45,13 +45,10 @@
 	</div>
 
 	<div class="row">
-		<div class="col-sm-2 col-sm-offset-1">
+		<div class="col-sm-2 col-sm-offset-2">
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary">Find</button>
 			</div>
 		</div>
 	</div>
 <% end %>
-
-<br><br>
-<%= link_to 'Create a board', new_board_path %>

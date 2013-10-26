@@ -1,14 +1,4 @@
 GIT
-  remote: git://github.com/petergoldstein/acts_as_commentable_with_threading.git
-  revision: 531c957fa423a5107f78104720e845e73a11d92f
-  branch: feature/rails_4
-  specs:
-    acts_as_commentable_with_threading (1.1.2)
-      activerecord (>= 3.0)
-      activesupport (>= 3.0)
-      awesome_nested_set (>= 2.0)
-
-GIT
   remote: git://github.com/sporkrb/spork-rails.git
   revision: 0dd45e59d3237b4c8f9efc215b46d9c07072a95e
   specs:
@@ -250,7 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_commentable_with_threading!
+  awesome_nested_set
   bootstrap-sass!
   capybara
   coffee-rails (~> 4.0.0)

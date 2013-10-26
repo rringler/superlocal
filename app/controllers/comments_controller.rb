@@ -1,12 +1,20 @@
 class CommentsController < ApplicationController
 	def new
 		@comment = Comment.new
+		@board = Board.where(params[:board_id]).first
+		@post = Post.where(params[:post_id]).first
+		@parent = Post.where(params[:parent_id]).first
 	end
 
 	def create
-		@post = Post.where(id: params[:post_id])
-		@user = User.where(id: params[:user_id])
-		@comment = Comment.build_from(@post, @user, params[:text])
+		@comment = Comment.new(comment_params)
+		@comment.user_id = current_user.id
+
+		if @comment.save
+			flash[:success] = "Created a new comment!"
+		end
+
+		redirect_to board_post_path(@comment.post)
 	end
 
 	def show
@@ -19,5 +27,11 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	private
+
+	def comment_params
+		params.require(:comment).permit(:post_id, :text)
 	end
 end
