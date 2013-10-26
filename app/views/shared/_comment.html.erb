@@ -1,16 +1,21 @@
-<div class="well">
-	<div class="row">
-		<p>
-			<%= link_to comment.user.username, comment.user %> | posted 
-			<%= time_ago_in_words(comment.created_at) %> ago 
-		</p>
+<div class="row">
+	<div class="col-sm-1">
+		<%= render 'shared/vote_box', vote_object: 'comment' %>
 	</div>
-	<div class="row">
-		<p><%= comment.text %></p>
-	</div>
-	<div class="row">
-		<%= link_to 'Reply', new_board_post_comment_path(comment.post.board,
-																										 comment.post,
-																										 parent_id: comment.id) %>
+	<div class="col-sm-11">
+		<div class="row">
+			<p>
+				<%= link_to comment.user.username, comment.user %> | posted 
+				<%= time_ago_in_words(comment.created_at) %> ago 
+			</p>
+		</div>
+		<div class="row">
+			<p><%= comment.text %></p>
+		</div>
+		<div class="row">
+			<%= link_to 'Reply', new_board_post_comment_path(comment.post.board,
+																											 comment.post,
+																											 parent_id: comment.id) %>
+		</div>
 	</div>
 </div>

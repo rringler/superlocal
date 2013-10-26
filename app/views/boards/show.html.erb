@@ -10,11 +10,12 @@
 <hr />
 
 <h4>Recent posts</h4>
-<div class="well">
 <% if @posts.any? %>
-	<%= render partial: 'post', collection: @posts %>
+	<div class="well">
+		<%= render partial: 'shared/post', collection: @posts %>
+	</div>
 <% else %>
-	<p>We ain't found shit.</p>
+	<div class="well">
+		<p>We ain't found shit.</p>
+	</div>
 <% end %>
-
-<%= will_paginate @posts %>

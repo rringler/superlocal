@@ -1,35 +1,66 @@
-<div class="jumbotron">
-	<h2><%= link_to @post.board.title, @post.board %></h2>
-	<h4><%= @post.board.description %></h4>
+<div class="row">
+	<div class="col-sm-8">
+		<h2>
+			<%= link_to @post.board.title, @post.board %><br />
+			<small><%= @post.board.description %></small>
+		</h2>
+	</div>
+	<div class="col-sm-4">
+		<%= link_to 'Subscribe', '#', class: 'btn btn-primary pull-right' %>
+	</div>
 </div>
 
 <hr />
 
-<h2><%= @post.title %></h2>
-<small>submitted <%= time_ago_in_words(@post.created_at) %> ago 
-		by <%= link_to @post.user.username %></small>
-<div class="well">
-	<%= @post.text %>
+<div class="row">
+	<div class="col-sm-1">
+		<%= render 'shared/vote_box', vote_object: 'post' %>
+	</div>
+	<div class="col-sm-11">
+		<div class="row">
+			<h2><%= @post.title %></h2>
+		</div>
+		<div class="row">
+			<small>
+				submitted <%= time_ago_in_words(@post.created_at) %> ago 
+				by <%= link_to @post.user.username %>
+			</small>
+		</div>
+	</div>
 </div>
-<small><%= @post.comments.size %> comments</small>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="well">
+			<%= @post.text %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
+		<small><%= @post.comments.size %> comments</small>
+	</div>
+</div>
 
 <hr />
 
-<% if @post.comments.any? %>
-	<%= display_nested_comments @comments.arrange(order: :created_at) %>
-<% end %>
-
-
-<%= form_tag board_post_comments_path(@post.board, @post), method: :post %>
+<div class="row">
+	<%= form_tag board_post_comments_path(@post.board, @post), method: :post %>
 
 <div class="form-group">
-	Commenting as: <%= link_to current_user.username, current_user %>
+	
 	<%= hidden_field_tag 'comment[post_id]', @post.id %>
+	<%= label_tag 'comment[text]', "Commenting as: #{link_to(current_user.username, \
+																													 current_user)}".html_safe %>
 	<%= text_area_tag 'comment[text]', nil,
-																		 columns: 1,
 																		 rows: 3,
 																		 autofocus: true,
 																		 class: "form-control" %>
 </div>
 
 <button type="submit" class="btn btn-default">Save</button>
+
+<% if @post.comments.any? %>
+	<%= display_nested_comments(@comments.arrange(order: :created_at)) %>
+<% end %>
+
+<hr />
