@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
 
 	def show
 		@board = Board.where(id: params[:id]).first
-		@posts = @board.posts.paginate(page: 1, per_page: 20)
+		@posts = @board.posts
 	end
 
 	def find

@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
 	def new
-		@comment = Comment.new
+		@comment = Comment.new(parent_id: params[:parent_id])
+		@parent = Comment.where(id: @comment.parent_id).first if @comment.parent_id
 		@board = Board.where(params[:board_id]).first
 		@post = Post.where(params[:post_id]).first
-		@parent = Post.where(params[:parent_id]).first
 	end
 
 	def create
@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 			flash[:success] = "Created a new comment!"
 		end
 
-		redirect_to board_post_path(@comment.post)
+		redirect_to board_post_path(@comment.post.board, @comment.post)
 	end
 
 	def show
@@ -32,6 +32,6 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:post_id, :text)
+		params.require(:comment).permit(:post_id, :parent_id, :text)
 	end
 end

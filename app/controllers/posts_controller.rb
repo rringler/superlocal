@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
 		if @post.save
 			flash[:success] = "Created a new post!"
-			redirect_to board(@post.board.id)
+			redirect_to board_path(@post.board)
 		else
 			render 'new'
 		end
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.where(id: params[:id]).first
-		@comments = @post.comments.paginate(page: 1, per_page: 20)
+		@comments = @post.comments
 	end
 
 	def edit

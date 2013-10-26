@@ -2,5 +2,5 @@ class Comment < ActiveRecord::Base
 	belongs_to :post
 	belongs_to :user
 
-  acts_as_nested_set
+  has_ancestry
 end

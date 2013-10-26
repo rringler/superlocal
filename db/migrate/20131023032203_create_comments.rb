@@ -3,9 +3,6 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
     	t.integer			:user_id,   :null => false
     	t.integer			:post_id,   :null => false
-    	t.integer			:parent_id
-    	t.integer			:lft
-    	t.integer			:rgt
     	t.text				:text, 		  :null => false
 
       t.timestamps

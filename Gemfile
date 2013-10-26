@@ -13,7 +13,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'figaro'
 gem 'devise'
 gem 'will_paginate'
-gem 'awesome_nested_set'
+gem 'ancestry'
 
 group :development do
 	gem 'sqlite3'

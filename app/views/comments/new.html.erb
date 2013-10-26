@@ -1,19 +1,9 @@
-<% if @parent.id > 0 %>
-	<div class="well">
-		<div class="row">
-			<p>
-				<%= link_to @parent.user.username, @parent.user %> | posted 
-				<%= time_ago_in_words(@parent.created_at) %> ago 
-			</p>
-		</div>
-		<div class="row">
-			<p><%= @parent.text %></p>
-		</div>
-	</div>
-<% elsif @parent.id == 0 %>
+<% if @parent %>
+	<%= render partial: 'shared/comment', locals: { comment: @parent } %>
+<% else %>
 	<div class="row">
 		<div class="well">
-			<%= render 'boards/post', post: @post %>
+			<%= render partial: 'boards/post', post: @post %>
 		</div>
 	</div>
 <% end %>
@@ -23,13 +13,14 @@
 
 	<div class="form-group">
 		Commenting as: <%= link_to current_user.username, current_user %>
-		<%= f.hidden_field :parent_id, value: @parent.id %>
+		<%= f.hidden_field :post_id, value: @post.id %>
+		<%= f.hidden_field :parent_id, value: @comment.parent_id %>
 		<%= f.text_area :text, columns: 1,
 													 rows: 3,
 													 autofocus: true,
 													 class: "form-control" %>
 	</div>
 
-	<button type="submit" class="btn btn-default">Save</button>
+	<button type="submit" class="btn btn-primary">Save</button>
 
 <% end %>
