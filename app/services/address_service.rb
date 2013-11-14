@@ -16,7 +16,7 @@ class AddressService
 
 
 	def validated_address
-		uri = URI('http://production.shippingapis.com/ShippingAPITest.dll')
+		uri = URI('http://production.shippingapis.com/ShippingAPI.dll')
 		uri.query = URI.encode_www_form({ API: 'Verify', XML: xml_request_params })
 
 		response = Net::HTTP.get_response(uri)
