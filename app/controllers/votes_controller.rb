@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+	before_filter :authenticate_user!
+	
 	def new
 		@vote = Vote.new
 	end

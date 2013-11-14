@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 	def new
 		@post = Post.new
 		@board = Board.where(id: params[:board_id]).first

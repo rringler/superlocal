@@ -1,7 +1,5 @@
 class BoardsController < ApplicationController
-	# def new
-	# 	@board = Board.new
-	# end
+	before_filter :authenticate_user!, only: [:create, :edit, :update]
 
 	def create
 		@board = Board.new(board_params)

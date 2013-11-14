@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+	before_filter :authenticate_user!, only: [:edit, :update, :destroy]
+
 	def new
 		@comment = Comment.new(parent_id: params[:parent_id])
 		@parent = Comment.where(id: @comment.parent_id).first if @comment.parent_id
