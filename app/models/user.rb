@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
 				 
 	attr_accessor :login
 
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :email,    presence: true, uniqueness: { case_sensitive: false }
+
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

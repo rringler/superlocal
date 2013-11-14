@@ -5,4 +5,6 @@ class Comment < ActiveRecord::Base
   has_ancestry
 
   scope :recent, ->(limit = 10) { order('created_at DESC').limit(limit) }
+
+  validates :text, presence: true
 end
