@@ -1,17 +1,23 @@
-<div class="row">
-	<div class="col-sm-1">
-		<%= render 'shared/vote_box', vote_object: 'post' %>
+<%= "<div class=\"well\">".html_safe if (defined?(wrap_in) && wrap_in == :well) %>
+	<div class="row">
+		<div class="col-sm-1">
+			<%= render 'shared/vote_box', vote_object: 'post' %>
+		</div>
+		<div class="col-sm-11">
+			<div class="row">
+				<h4><%= link_to post.title, board_post_path(post.board.id, post.id) %></h4>
+			</div>
+			<div class="row">
+				<p>
+					submitted <%= time_ago_in_words(post.created_at) %> ago by 
+					 <%= link_to post.user.username %>
+					 <%= " | posted in #{link_to post.board.title, board_path(post.board)}"
+					 		 .html_safe if (defined?(show_board) && show_board == true) %>
+				</p>
+			</div>
+			<div class="row">
+				<%= link_to "#{post.comments.size} comments", board_post_path(post.board.id, post.id) %>
+			</div>
+		</div>
 	</div>
-	<div class="col-sm-11">
-		<div class="row">
-			<h4><%= link_to post.title, board_post_path(post.board.id, post.id) %></h4>
-		</div>
-		<div class="row">
-			submitted <%= time_ago_in_words(post.created_at) %> ago 
-				by <%= link_to post.user.username %>
-		</div>
-		<div class="row">
-			<%= link_to "#{post.comments.size} comments", board_post_path(post.board.id, post.id) %>
-		</div>
-	</div>
-</div>
+<%= "</div>".html_safe if (defined?(wrap_in) && wrap_in == :well) %>

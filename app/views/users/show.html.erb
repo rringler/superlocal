@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-8">
-		<h2><%= @user.username %></h2>
+		<h2><%= @user.username %>'s profile</h2>
 	</div>
 </div>
 
@@ -14,7 +14,9 @@
 					<h4>Recent posts:</h4>
 				</div>
 				<div class="row">
-					<%= render partial: 'shared/post', collection: @posts %>
+					<%= render partial: 'shared/post', collection: @posts,
+																						 locals: { wrap_in: :well,
+																						 					 show_board: true } %>
 				</div>
 			</div>
 		</div>
@@ -29,7 +31,9 @@
 					<h4>Recent comments:</h4>
 				</div>
 				<div class="row">
-					<%= render partial: 'shared/comment', collection: @comments %>
+					<%= render partial: 'shared/comment', collection: @comments,
+																								locals: { wrap_in: :well,
+																													show_post: true } %>
 				</div>
 			</div>
 		</div>
