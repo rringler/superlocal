@@ -14,6 +14,7 @@ gem 'figaro'
 gem 'devise'
 gem 'will_paginate'
 gem 'ancestry'
+gem 'thumbs_up'
 
 group :development do
 	gem 'sqlite3'

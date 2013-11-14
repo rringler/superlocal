@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
+  acts_as_voter
+
+  has_karma :posts, as: :submitter, weight: [1, 1]
+  has_karma :comments, as: :submitter, weight: [1, 1]
   has_many :posts
   has_many :comments
   has_many :votes
