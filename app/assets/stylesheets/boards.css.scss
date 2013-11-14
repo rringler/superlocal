@@ -3,7 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .nested_comment {
-	margin-top: 20px;
-	margin-bottom: 5px;
-	padding-left: 30px;
+	margin-top: 10px;
+
+	.nested_comment {
+		padding-left: 30px;
+	}
 }
