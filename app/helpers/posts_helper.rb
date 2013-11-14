@@ -3,7 +3,7 @@ module PostsHelper
 		comments.map do |comment, sub_comments|
 			content_tag(:div, render(partial: 'shared/comment', locals: { comment: comment }) + 
 												display_nested_comments(sub_comments),
-												class: 'well nested_comment')
+												class: 'nested_comment well')
 		end.join.html_safe
 	end
 end
