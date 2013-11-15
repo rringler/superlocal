@@ -24,3 +24,17 @@ nav form {
 		margin-bottom: 6px;
 	}
 }
+
+.vote {
+	text-align: center;
+
+	&.up_arrow {
+		padding-left: 2px;
+	}
+
+	&.tally {
+		font-weight: bolder;
+		font-size: 1.2em;
+		color: rgb(66,139,202);
+	}
+}

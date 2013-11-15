@@ -1,14 +1,19 @@
-<p class="text-center">
-	<%= link_to	content_tag(:span, nil, class: "glyphicon glyphicon-chevron-up"),
-							vote_path(klass: voteable.class,
-												id: voteable.id,
-												direction: 'up'),
-							remote: true %>
-</p>
-<p class="text-center">
-	<%= link_to	content_tag(:span, nil, class: "glyphicon glyphicon-chevron-down"),
-							vote_path(klass: voteable.class,
-												id: voteable.id,
-												direction: 'down'),
-							remote: true %>
-</p>
+<div class="vote_box">
+	<div class="vote up_arrow">
+		<%= link_to	content_tag(:span, nil, class: "glyphicon glyphicon-chevron-up"),
+								vote_path(klass: voteable.class,
+													id: voteable.id,
+													direction: 'up'),
+								remote: true %>
+	</div>
+	<div class="vote tally">
+		<%= voteable.plusminus %>
+	</div>
+	<div class="vote down_arrow">
+		<%= link_to	content_tag(:span, nil, class: "glyphicon glyphicon-chevron-down"),
+								vote_path(klass: voteable.class,
+													id: voteable.id,
+													direction: 'down'),
+								remote: true %>
+	</div>
+</div>
