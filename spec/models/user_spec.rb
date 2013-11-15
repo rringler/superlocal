@@ -38,4 +38,35 @@ describe User do
 			end
 		end		
 	end
+
+	describe 'instance methods' do
+		let(:user) { FactoryGirl.create(:user) }
+		let(:voteable_object) { FactoryGirl.create(:post) }
+
+		describe '#up_vote' do
+			it 'should increment the plusminus tally if \
+			    the user has not already upvoted the object' do
+				expect { user.up_vote(voteable_object) }.to change(voteable_object, :plusminus).by(1)
+			end
+
+			it 'should delete the previous upvote if \
+			    the user has already upvoted the object' do
+				user.up_vote(voteable_object)
+				expect { user.up_vote(voteable_object) }.to change(voteable_object, :plusminus).by(-1)
+			end
+		end
+
+		describe '#down_vote' do
+			it 'should decrement the plusminus tally if \
+			    the user has not already downvoted the object' do
+				expect { user.down_vote(voteable_object) }.to change(voteable_object, :plusminus).by(-1)
+			end
+
+			it 'should delete the previous downvote if \
+			    the user has already downvoted the object' do
+				user.down_vote(voteable_object)
+				expect { user.down_vote(voteable_object) }.to change(voteable_object, :plusminus).by(1)
+			end
+		end
+	end
 end
