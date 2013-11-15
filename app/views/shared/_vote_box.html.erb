@@ -6,7 +6,7 @@
 													direction: 'up'),
 								remote: true %>
 	</div>
-	<div class="vote tally">
+	<div id="<%= "#{voteable.class}_#{voteable.id}_tally" %>" class="vote tally">
 		<%= voteable.plusminus %>
 	</div>
 	<div class="vote down_arrow">

@@ -23,6 +23,15 @@ class User < ActiveRecord::Base
   validates :email,    presence: true, uniqueness: { case_sensitive: false }
 
 
+  def up_vote(voteable)
+    voted_for?(voteable) ? unvote_for(voteable) : vote_exclusively_for(voteable)
+  end
+
+  def down_vote(voteable)
+    voted_against?(voteable) ? unvote_for(voteable) : vote_exclusively_against(voteable)
+  end
+
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
