@@ -4,6 +4,7 @@
 								vote_path(klass: voteable.class,
 													id: voteable.id,
 													direction: 'up'),
+								method: :post,
 								remote: true %>
 	</div>
 	<div id="<%= "#{voteable.class}_#{voteable.id}_tally" %>" class="vote tally">
@@ -14,6 +15,7 @@
 								vote_path(klass: voteable.class,
 													id: voteable.id,
 													direction: 'down'),
+								method: :post,
 								remote: true %>
 	</div>
 </div>

@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
 	def show
 		@board = Board.where(id: params[:id]).first
 		@posts = @board.posts
+		@post  = Post.new
 	end
 
 	def find
