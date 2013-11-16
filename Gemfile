@@ -5,6 +5,8 @@ gem 'rails', '4.0.0'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-script-source', '1.5.0' # stupid hack because 1.6.3 does not show
+																	  # line numbers in error messages
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'newrelic_rpm'
@@ -15,6 +17,7 @@ gem 'devise'
 gem 'will_paginate'
 gem 'ancestry'
 gem 'thumbs_up'
+gem 'acts_as_follower'
 
 group :development do
 	gem 'sqlite3'

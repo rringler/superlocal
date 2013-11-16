@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
          :validatable
 
   acts_as_voter
+  acts_as_follower
 
   has_karma :posts, as: :submitter, weight: [1, 1]
   has_karma :comments, as: :submitter, weight: [1, 1]

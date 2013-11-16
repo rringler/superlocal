@@ -6,6 +6,19 @@
 
 <hr />
 
+<% if @following_boards %>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="well">
+				<div class="row">
+					<h4>Board subscriptions:</h4>
+				</div>
+				<%= render partial: 'shared/board', collection: @following_boards %>
+			</div>
+		</div>
+	</div>
+<% end %>
+
 <% if @posts %>
 	<div class="row">
 		<div class="col-sm-12">

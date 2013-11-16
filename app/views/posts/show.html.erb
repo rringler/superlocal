@@ -6,7 +6,12 @@
 		</h2>
 	</div>
 	<div class="col-sm-4">
-		<%= link_to 'Subscribe', '#', class: 'btn btn-primary pull-right' %>
+		<% button_text = current_user.follow(@post.board) ? 'Unsubscribe' : 'Subscribe' %>
+		<% button_class = current_user.follow(@post.board) ? 'btn-default' : 'btn-primary' %>
+		<%= link_to "#{button_text}", follow_path(klass: @post.board.class, id: @post.board.id),
+														  		class: "btn #{button_class} btn-subscribe pull-right",
+														  		method: :post,
+														  		remote: true %>
 	</div>
 </div>
 

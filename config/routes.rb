@@ -16,7 +16,10 @@ Superlocal::Application.routes.draw do
   match 'boards/find', to: "boards#find",
   										 via: [:post],
   										 as: 'find_board'
-  match 'votes/vote',  to: "votes#vote",
-                       via: [:get],
+  match 'vote',        to: "votes#vote",
+                       via: [:post],
                        as: 'vote'
+  match 'follow',      to: "follows#follow",
+                       via: [:post],
+                       as: 'follow'
 end
