@@ -13,11 +13,13 @@
 	</div>
 </div>
 
-<div id="new-post" class="row">
-	<div class="col-sm-12">
-		<%= render 'posts/form' %>
+<% if user_signed_in? %>
+	<div id="new-post" class="row">
+		<div class="col-sm-12">
+			<%= render 'posts/form' %>
+		</div>
 	</div>
-</div>
+<% end %>
 
 <hr />
 

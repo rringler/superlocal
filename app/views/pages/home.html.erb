@@ -1,4 +1,4 @@
-<% if current_user.following_boards.size %>
+<% if user_signed_in? && current_user.following_boards.size %>
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="well">
