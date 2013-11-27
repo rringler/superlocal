@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<div class="well">
+			<h3>Find a board:</h3>
+		</div>
+	</div>
+</div>
+
+<%= form_tag find_board_path, method: :post do |f| %>
+	<div class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="form-group">
+				<%= text_field_tag "address[address2]",
+													 nil, 
+													 class: "form-control",
+													 placeholder: "Street address (no apartment or "\
+													 							"building numbers)",
+													 autofocus: true %>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4 col-sm-offset-2">
+			<div class="form-group">
+				<%= text_field_tag "address[city]",
+													 nil,
+													 class: "form-control",
+													 placeholder: "City" %>
+			</div>
+		</div>
+
+		<div class="col-sm-2">
+			<div class="form-group">
+				<%= text_field_tag "address[state]",
+													 nil,
+													 class: "form-control",
+													 placeholder: "State" %>
+			</div>
+		</div>
+
+		<div class="col-sm-2">
+			<div class="form-group">
+				<%= text_field_tag "address[zip5]",
+													 nil,
+													 class: "form-control",
+													 placeholder: "Zip" %>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-2 col-sm-offset-2">
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Find</button>
+			</div>
+		</div>
+	</div>
+<% end %>

@@ -1,0 +1,12 @@
+<% if current_user && current_user.following_boards.size %>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="well">
+				<div class="row">
+					<h3>Boards you follow:</h3>
+				</div>
+				<%= render partial: 'shared/board', collection: current_user.following_boards %>
+			</div>
+		</div>
+	</div>
+<% end %>
