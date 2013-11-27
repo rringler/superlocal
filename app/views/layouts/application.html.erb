@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Superlocal</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application",               "data-turbolinks-track" => true %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
-</head>
-<body>
+	<head>
+	  <title>Superlocal</title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application",               "data-turbolinks-track" => true %>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <%= csrf_meta_tags %>
+	  <%= render 'layouts/shim' %>
+	</head>
+	<body>
 
-<%= render 'layouts/navbar' %>
+	<%= render 'layouts/navbar' %>
 
-<!-- <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p> -->
+	<!-- <p class="notice"><%#= notice %></p>
+	<p class="alert"><%#= alert %></p> -->
 
-<div class="container">
-	<%= yield %>
-</div>
+	<div class="container">
+		<%= yield %>
+	</div>
 
-<%= debug(params) unless Rails.env.production? %>
-</body>
+	<%= debug(params) unless Rails.env.production? %>
+	</body>
 </html>
