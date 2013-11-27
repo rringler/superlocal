@@ -4,7 +4,11 @@ FactoryGirl.define do
   factory :user do
     sequence(:username) 	{ |n| "Test_User%04d" % n }
     sequence(:email) 			{ |n| "Test_User%04d@gmail.com" % n }
-    password 							"Secure_Password"
-    password_confirmation "Secure_Password"
+    password 							"abcdef"
+    password_confirmation "abcdef"
+
+    factory :confirmed_user do
+      confirmed_at        DateTime.now - 1.day
+    end
   end
 end

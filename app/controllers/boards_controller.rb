@@ -19,8 +19,7 @@ class BoardsController < ApplicationController
 
 	def find
 		@address = Address.new(params[:address])
-		#@slug    = AddressService.new(@address).slug
-		@slug 	 = 'test_value'
+		@slug    = AddressService.new(@address).slug
 		@board   = Board.where(slug: @slug).first_or_initialize
 		redirect_to @board unless @board.new_record?
 	end

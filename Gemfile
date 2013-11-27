@@ -37,6 +37,7 @@ group :test do
 	gem 'guard-rspec'
 	gem 'guard-spork'
 	gem 'rb-fsevent'
+	gem 'launchy'
 end
 
 group :doc do

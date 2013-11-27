@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   it 'has valid factories' do
 		FactoryGirl.create(:user).should be_valid
+		FactoryGirl.create(:confirmed_user).should be_valid
 	end
 
 	describe 'validations' do

@@ -17,4 +17,14 @@ describe Board do
 			end
 		end
 	end
+
+	describe 'followable' do
+		it 'should be followable' do
+			board = FactoryGirl.create(:board)
+			user  = FactoryGirl.create(:user)
+
+			user.follow(board)
+			user.following?(board).should be_true
+		end
+	end
 end
