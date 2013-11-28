@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
 
 	has_many :comments
 
+	attr_accessor :parent
+
 	scope :recent, ->(limit = 10) { order('created_at DESC').limit(limit) }
 
 	validates :title, presence: true, length: { maximum: 255 }

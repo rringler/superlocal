@@ -47,6 +47,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    betterlorem (0.1.2)
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -250,6 +251,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_follower
   ancestry
+  betterlorem
   bootstrap-sass!
   capybara
   coffee-rails (~> 4.0.0)
