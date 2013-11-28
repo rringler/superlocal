@@ -28,6 +28,8 @@ group :development, :test do
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
 	gem 'terminal-notifier-guard'
+	gem 'launchy'
+	gem 'betterlorem'
 end
 
 group :test do
@@ -37,7 +39,6 @@ group :test do
 	gem 'guard-rspec'
 	gem 'guard-spork'
 	gem 'rb-fsevent'
-	gem 'launchy'
 end
 
 group :doc do
