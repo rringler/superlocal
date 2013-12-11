@@ -1,5 +1,4 @@
 require 'spec_helper'
-include Devise::TestHelpers
 
 describe 'Boards#show page' do
 	before(:each) do
@@ -8,10 +7,7 @@ describe 'Boards#show page' do
 														description: "1800 Cabrillo Memorial Dr., "\
 																				 "San Diego, CA 92106",
 														slug:        "1800-cabrillo-memorial-dr-92106" })
-		@root_posts = (1..4).to_a.map do
-			FactoryGirl.create(:post, user: @user,
-			                          board: @board)
-		end
+		@root_posts = FactoryGirl.create_list(:post, 4, user: @user, board: @board)
 
 		@children_posts = @root_posts.map do |root_post|
 			FactoryGirl.create(:post, user: @user,
