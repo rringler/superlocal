@@ -37,36 +37,54 @@ describe User do
 				user1 = FactoryGirl.create(:user)
 				user2 = FactoryGirl.build(:user, email: user1.email.downcase).should_not be_valid
 			end
-		end		
+		end
 	end
 
 	describe 'instance methods' do
 		let(:user) { FactoryGirl.create(:user) }
-		let(:voteable_object) { FactoryGirl.create(:post) }
 
 		describe '#up_vote' do
-			it 'should increment the plusminus tally if \
-			    the user has not already upvoted the object' do
+			let(:voteable_object) { FactoryGirl.create(:post) }
+
+			it 'should increment the plusminus tally if '\
+			   'the user has not already upvoted the object' do
 				expect { user.up_vote(voteable_object) }.to change(voteable_object, :plusminus).by(1)
 			end
 
-			it 'should delete the previous upvote if \
-			    the user has already upvoted the object' do
+			it 'should delete the previous upvote if '\
+			   'the user has already upvoted the object' do
 				user.up_vote(voteable_object)
 				expect { user.up_vote(voteable_object) }.to change(voteable_object, :plusminus).by(-1)
 			end
 		end
 
 		describe '#down_vote' do
-			it 'should decrement the plusminus tally if \
-			    the user has not already downvoted the object' do
+			let(:voteable_object) { FactoryGirl.create(:post) }
+
+			it 'should decrement the plusminus tally if '\
+			   'the user has not already downvoted the object' do
 				expect { user.down_vote(voteable_object) }.to change(voteable_object, :plusminus).by(-1)
 			end
 
-			it 'should delete the previous downvote if \
-			    the user has already downvoted the object' do
+			it 'should delete the previous downvote if '\
+			   'the user has already downvoted the object' do
 				user.down_vote(voteable_object)
 				expect { user.down_vote(voteable_object) }.to change(voteable_object, :plusminus).by(1)
+			end
+		end
+
+		describe '#toggle_following' do
+			let(:followable_object) { FactoryGirl.create(:board) }
+
+			it 'should follow the object if '\
+				 'the user is not already following the object' do
+				 	expect { user.toggle_following(followable_object) }.to change(user, :follow_count).by(1)
+			end
+
+			it 'should unfollow the object if '\
+				 'the user is already following the object' do
+				 	user.toggle_following(followable_object)
+				 	expect { user.toggle_following(followable_object) }.to change(user, :follow_count).by(-1)
 			end
 		end
 	end
