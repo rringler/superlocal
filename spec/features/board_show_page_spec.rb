@@ -16,9 +16,9 @@ describe 'Boards#show page' do
 		end
 
 		# stub out the AddressService.slug method to avoid USPS API hit
-		AddressService.any_instance
-									.stub(:slug)
-									.and_return("1800-cabrillo-memorial-dr-92106")
+		AddressValidator.any_instance
+										.stub(:slug)
+										.and_return("1800-cabrillo-memorial-dr-92106")
 	end
 
 	context 'when the user is signed in' do

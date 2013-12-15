@@ -12,7 +12,8 @@ describe 'home page' do
 
 	before(:each) do
 		# stub out the AddressService.slug method to avoid USPS API hit
-		AddressService.any_instance.stub(:slug).and_return("1800-cabrillo-memorial-dr-92106")
+		AddressValidator.any_instance.stub(:slug)
+										.and_return("1800-cabrillo-memorial-dr-92106")
 
 		visit root_path
 	end

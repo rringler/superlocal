@@ -1,9 +1,9 @@
-class AddressService
+class AddressValidator
 	require 'net/http'
 	require 'rexml/document'
 
 	attr_reader :address
-	
+
 	def initialize(address)
 		@address = address
 	end
@@ -50,28 +50,28 @@ class AddressService
 
 	def address_to_slug(address)
 		return if address.nil?
-		
+
 		slug = "#{address[:address2]}-#{address[:zip5]}"
 
 		# Perform transliteration to replace non-ascii characters with
 	  # an ascii character
 	  slug = slug.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n, '').to_s
-	  
+
 	  # Remove single quotes from input
 	  slug.gsub!(/[']+/, '')
 
 	  # Replace any non-word character (\W) with a space
 	  slug.gsub!(/\W+/, ' ')
-	  
+
 	  # Remove any whitespace before and after the string
 	  slug.strip!
-	  
+
 	  # All characters should be downcased
 	  slug.downcase!
-	  
+
 	  # Replace spaces with dashes
 	  slug.gsub!(' ', '-')
-	  
+
 	  # Return the resulting slug
 	  slug
 	end
