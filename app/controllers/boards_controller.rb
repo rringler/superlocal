@@ -3,9 +3,9 @@ class BoardsController < ApplicationController
 
 	def create
 		@board = Board.new(board_params)
+
 		if @board.save
-			flash[:success] = "Created a new board!"
-			redirect_to @board
+			redirect_to @board, flash: { success: "Created a new board!" }
 		else
 			render 'new'
 		end
@@ -13,14 +13,12 @@ class BoardsController < ApplicationController
 
 	def show
 		@board = Board.where(id: params[:id]).first
-		@posts = @board.posts
-		@post  = Post.new
 	end
 
 	def find
-		@address = Address.new(params[:address])
-		@slug    = AddressService.new(@address).slug
-		@board   = Board.where(slug: @slug).first_or_initialize
+		address = Address.new(address_params)
+		slug    = AddressValidator.new(address).slug
+		@board  = Board.where(slug: slug).first_or_initialize
 		redirect_to @board unless @board.new_record?
 	end
 
@@ -32,7 +30,12 @@ class BoardsController < ApplicationController
 	end
 
 	private
+
 	def board_params
 		params.require(:board).permit(:title, :description, :slug)
+	end
+
+	def address_params
+		params.require(:address).permit(:address2, :city, :state, :zip5)
 	end
 end
