@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
 	end
 
 	def show
-		@board = Board.where(id: params[:id]).first
+		@board = Board.where(id: params[:id]).first.decorate
 	end
 
 	def find

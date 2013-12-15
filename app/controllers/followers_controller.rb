@@ -2,14 +2,14 @@ class FollowersController < ApplicationController
 	before_filter :authenticate_user!
 
 	def follow
-		@followable = params[:klass].constantize.find(params[:id])
+		followable = params[:type].downcase
+                              .capitalize
+                              .constantize
+                              .where(id: params[:id])
+                              .first
 
-		if current_user.following?(@followable)
-			current_user.stop_following(@followable)
-		else
-			current_user.follow(@followable)
-		end
-		
+		current_user.toggle_following(followable)
+
 		respond_to do |format|
 			format.js
 		end

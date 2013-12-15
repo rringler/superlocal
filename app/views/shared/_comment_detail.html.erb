@@ -1,0 +1,31 @@
+<div class="comment-detail">
+  <div class="row comment-detail-title">
+    <div class="col-sm-12">
+      <h5><%= link_to comment.post.title, board_post_path(comment.post.board, comment.post) %></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1">
+      <span><%= render 'shared/vote_box', voteable: comment %></span>
+    </div>
+    <div class="col-sm-10">
+      <div class="row">
+        <p>
+          <% link_params = { board_id: comment.post.board,
+                                   id: comment.post.id } %>
+          <%= "#{link_to comment.user.username, comment.user} | posted "\
+              "#{time_ago_in_words(comment.created_at)} ago".html_safe %>
+        </p>
+      </div>
+      <div class="row">
+        <p><%= comment.text %></p>
+      </div>
+      <div class="row">
+        <%= link_to 'Reply', new_board_post_comment_path(comment.post.board,
+                                                         comment.post,
+                                                         parent_id: comment.id) %>
+      </div>
+    </div>
+  </div>
+</div>

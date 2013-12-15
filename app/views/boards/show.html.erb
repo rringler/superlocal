@@ -1,38 +1,29 @@
-<div class="jumbotron">
-	<h2><%= @board.title %></h2>
-	<h4><%= @board.description %></h4>
+<div class="row">
+	<div class="col-sm-10">
+		<%= @board.title_block %>
+	</div>
+
+	<div class="col-sm-2">
+		<%= @board.subscribe_button(class: "pull-right") %>
+	</div>
 </div>
 
 <hr />
 
-<% if user_signed_in? %>
-	<div class="row">
-		<div class="col-sm-12">
-			<%= link_to 'Create new post', new_board_post_path(@board),
-																		 id: 'toggle-new-post',
-																		 class: 'btn btn-primary',
-																		 remote: true %>
-		</div>
+<div class="row">
+	<div class="col-sm-12">
+		<%= @board.new_post_link %>
 	</div>
-
-	<div id="new-post-form"></div>
-<% else %>
-	<div class="row">
-		<div class="col-sm-12">
-			<%= link_to 'Create new post', new_user_session_path,
-																		 id: 'new-user-session',
-																		 class: 'btn btn-primary' %>
-		</div>
-	</div>
-<% end %>
+</div>
 
 <hr />
 
-<h4>Recent posts</h4>
-<div class="well">
-	<% if @board.posts.any? %>
-		<%= render partial: 'shared/post', collection: @board.posts %>
-	<% else %>
-		<p>We ain't found shit.</p>
-	<% end %>
+<div class="row">
+	<div class="col-sm-12">
+		<h4>Recent posts:</h4>
+	</div>
+</div>
+
+<div class="posts-container">
+	<%= @board.posts_block %>
 </div>

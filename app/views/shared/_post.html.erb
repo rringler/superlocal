@@ -1,4 +1,4 @@
-<%= "<div class=\"well\">".html_safe if (defined?(wrap_in) && wrap_in == :well) %>
+<div class="post-detail">
 	<div class="row">
 		<div class="col-sm-1">
 			<span>
@@ -11,7 +11,7 @@
 			</div>
 			<div class="row">
 				<p>
-					submitted <%= time_ago_in_words(post.created_at) %> ago by 
+					submitted <%= time_ago_in_words(post.created_at) %> ago by
 					 <%= link_to post.user.username %>
 					 <%= " | posted in #{link_to post.board.title, board_path(post.board)}"
 					 		 .html_safe if (defined?(show_board) && show_board == true) %>
@@ -22,4 +22,4 @@
 			</div>
 		</div>
 	</div>
-<%= "</div>".html_safe if (defined?(wrap_in) && wrap_in == :well) %>
+</div>

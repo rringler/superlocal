@@ -18,6 +18,7 @@ gem 'will_paginate'
 gem 'ancestry'
 gem 'thumbs_up'
 gem 'acts_as_follower'
+gem 'draper', '~> 1.3'
 
 group :development do
 	gem 'sqlite3'

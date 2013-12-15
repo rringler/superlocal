@@ -1,1 +1,9 @@
-$('a.subscribe').html('Unsubscribe');
+if ($('a#subscribe-button').html() == 'Subscribe') {
+  $('a#subscribe-button').text('Unsubscribe')
+                         .addClass('btn-default')
+                         .removeClass('btn-primary');
+} else {
+  $('a#subscribe-button').text('Subscribe')
+                         .addClass('btn-primary')
+                         .removeClass('btn-default');
+}

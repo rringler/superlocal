@@ -1,3 +1,26 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.comment-detail {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+
+  div.comment-detail-title {
+    padding-left: 14px;
+  }
+}
+
+div.nested-comment {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
+
+  div.nested-comment {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}

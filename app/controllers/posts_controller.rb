@@ -23,7 +23,8 @@ class PostsController < ApplicationController
 	end
 
 	def show
-		@post = Post.where(id: params[:id]).first
+		@post = Post.where(id: params[:id]).first.decorate
+		@board = @post.board.decorate
 	end
 
 	def edit

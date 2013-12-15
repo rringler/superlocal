@@ -19,7 +19,7 @@ Superlocal::Application.routes.draw do
   match 'vote',        to: "votes#vote",
                        via: [:post],
                        as: 'vote'
-  match 'follow',      to: "follows#follow",
+  match 'follow',      to: "followers#follow",
                        via: [:post],
                        as: 'follow'
 end

@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :votes
-				 
+
 	attr_accessor :login
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :email,    presence: true, uniqueness: { case_sensitive: false }
 
-
+  # Voting
   def up_vote(voteable)
     voted_for?(voteable) ? unvote_for(voteable) : vote_exclusively_for(voteable)
   end
@@ -32,7 +32,12 @@ class User < ActiveRecord::Base
     voted_against?(voteable) ? unvote_for(voteable) : vote_exclusively_against(voteable)
   end
 
+  #Following
+  def toggle_following(followable)
+    following?(followable) ? stop_following(followable) : follow(followable)
+  end
 
+  # Override required by Devise to allow username or email for login
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
