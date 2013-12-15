@@ -29,7 +29,7 @@
 		</div>
 		<div class="row">
 			<small>
-				submitted <%= time_ago_in_words(@post.created_at) %> ago 
+				submitted <%= time_ago_in_words(@post.created_at) %> ago
 				by <%= link_to @post.user.username %>
 			</small>
 		</div>
@@ -54,7 +54,7 @@
 	<%= form_tag board_post_comments_path(@post.board, @post), method: :post %>
 
 	<div class="form-group">
-		
+
 		<%= hidden_field_tag 'comment[post_id]', @post.id %>
 		<%= label_tag 'comment[text]', "Commenting as: #{link_to(current_user.username, \
 																														 current_user)}".html_safe %>
@@ -70,7 +70,7 @@
 </div>
 
 <% if @post.comments.any? %>
-	<%= display_nested_comments(@comments.arrange(order: :created_at)) %>
+	<%= display_nested_comments(@post.comments.arrange(order: :created_at)) %>
 <% end %>
 
 <hr />

@@ -1,0 +1,11 @@
+if ($('div#new-post-form').html() == '') {
+  $('div#new-post-form').html("<%= j render 'posts/form' %>");
+  $('a#toggle-new-post').text('Cancel new post')
+                        .addClass('btn-default')
+                        .removeClass('btn-primary');
+} else {
+  $('div#new-post-form').html('');
+  $('a#toggle-new-post').text('Create new post')
+                        .addClass('btn-primary')
+                        .removeClass('btn-default');
+}

@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
 	before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
 	def new
 		@post = Post.new
-		@board = Board.where(id: params[:board_id]).first
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def create
@@ -11,7 +16,7 @@ class PostsController < ApplicationController
 
 		if @post.save
 			flash[:success] = "Created a new post!"
-			redirect_to board_path(@post.board)
+			redirect_to board_post_path(@post.board, @post)
 		else
 			render 'new'
 		end
@@ -19,7 +24,6 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.where(id: params[:id]).first
-		@comments = @post.comments
 	end
 
 	def edit

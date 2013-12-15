@@ -10,15 +10,12 @@
 		<div class="col-sm-12">
 			<%= link_to 'Create new post', new_board_post_path(@board),
 																		 id: 'toggle-new-post',
-																		 class: 'btn btn-primary' %>
+																		 class: 'btn btn-primary',
+																		 remote: true %>
 		</div>
 	</div>
 
-	<div id="new-post" class="row">
-		<div class="col-sm-12">
-			<%= render 'posts/form' %>
-		</div>
-	</div>
+	<div id="new-post-form"></div>
 <% else %>
 	<div class="row">
 		<div class="col-sm-12">
@@ -32,12 +29,10 @@
 <hr />
 
 <h4>Recent posts</h4>
-<% if @posts.any? %>
-	<div class="well">
-		<%= render partial: 'shared/post', collection: @posts %>
-	</div>
-<% else %>
-	<div class="well">
+<div class="well">
+	<% if @board.posts.any? %>
+		<%= render partial: 'shared/post', collection: @board.posts %>
+	<% else %>
 		<p>We ain't found shit.</p>
-	</div>
-<% end %>
+	<% end %>
+</div>
