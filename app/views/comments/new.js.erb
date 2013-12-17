@@ -1,0 +1,5 @@
+if ($("<%= "div#comment-#{@comment.parent_id}-reply-form" %>").html() == '') {
+  $("<%= "div#comment-#{@comment.parent_id}-reply-form" %>").html("<%= j render partial: 'comments/form', locals: { comment: @comment } %>");
+} else {
+  $("<%= "div#comment-#{@comment.parent_id}-reply-form" %>").html('');
+}

@@ -1,26 +1,9 @@
-<% if @parent %>
-	<%= render partial: 'shared/comment', locals: { comment: @parent } %>
-<% else %>
-	<div class="row">
-		<div class="well">
-			<%= render partial: 'boards/post', post: @post %>
-		</div>
-	</div>
-<% end %>
+<div class="row">
+	<% if @parent %>
+		<%= render partial: 'shared/comment', locals: { comment: @comment.parent } %>
+	<% else %>
+		<%= render partial: 'shared/post', locals: { post: @comment.post } %>
+	<% end %>
+</div>
 
-<%= form_for @comment, url: board_post_comments_path(@board, @post),
-											 method: :post do |f| %>
-
-	<div class="form-group">
-		Commenting as: <%= link_to current_user.username, current_user %>
-		<%= f.hidden_field :post_id, value: @post.id %>
-		<%= f.hidden_field :parent_id, value: @comment.parent_id %>
-		<%= f.text_area :text, columns: 1,
-													 rows: 3,
-													 autofocus: true,
-													 class: "form-control" %>
-	</div>
-
-	<button type="submit" class="btn btn-primary">Save</button>
-
-<% end %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>

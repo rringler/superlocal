@@ -3,9 +3,11 @@ class CommentsController < ApplicationController
 
 	def new
 		@comment = Comment.new(parent_id: params[:parent_id])
-		@parent = Comment.where(id: @comment.parent_id).first if @comment.parent_id
-		@board = Board.where(params[:board_id]).first
-		@post = Post.where(params[:post_id]).first
+
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def create
@@ -34,6 +36,6 @@ class CommentsController < ApplicationController
 	private
 
 	def comment_params
-		params.require(:comment).permit(:post_id, :parent_id, :text)
+		params.require(:comment).permit(:board_id, :post_id, :parent_id, :text)
 	end
 end

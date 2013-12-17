@@ -15,7 +15,7 @@
 	</div>
 	<div class="col-sm-11">
 		<div class="row">
-			<h2><%= @post.title %></h2>
+			<h3 id="post-title"><%= @post.title %></h3>
 		</div>
 		<div class="row">
 			<small><%= @post.sub_title %></small>
@@ -37,8 +37,14 @@
 
 <hr />
 
-<%= render partial: 'comments/form', locals: { post: @post,
-																							 board: @post.board } %>
+<% link_params = { board_id:  @board,
+									 post_id:   @post,
+									 parent_id: nil } %>
+<%= link_to 'Reply', new_board_post_comment_path(link_params),
+										 class: 'btn btn-primary',
+										 remote: true,
+										 method: :get %>
+<div id="<%= "comment-#{nil}-reply-form" %>"></div>
 
 <hr />
 
