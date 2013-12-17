@@ -6,7 +6,7 @@
 
 <hr />
 
-<% if @user.following_boards %>
+<% if @user == current_user && @user.following_boards %>
 	<section id="followed-boards">
 		<div class="row">
 			<div class="col-sm-12">
@@ -28,6 +28,8 @@
 			</div>
 		</div>
 	</section>
+
+	<hr />
 <% end %>
 
 <% if @user.recent_posts %>
@@ -39,6 +41,8 @@
 		</div>
 		<%= render partial: 'shared/post', collection: @user.recent_posts %>
 	</section>
+
+	<hr />
 <% end %>
 
 <% if @user.recent_comments %>
