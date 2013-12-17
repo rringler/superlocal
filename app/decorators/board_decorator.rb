@@ -18,7 +18,7 @@ class BoardDecorator < Draper::Decorator
 
     h.link_to "#{btn_text}", h.follow_path(params),
                              id: 'subscribe-button',
-                             class: "btn #{btn_class} #{params[:class]}",
+                             class: "btn #{btn_class} #{params[:type]}-subscribe-btn",
                              remote: true,
                              method: :post
   end

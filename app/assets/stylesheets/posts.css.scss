@@ -11,7 +11,32 @@ div.post-detail {
 
 div.post {
   border: 1px solid #cccccc;
-  border-radius: 10px;
-  padding-top: 20px;
+  border-radius:  10px;
+  padding-top:    20px;
   padding-bottom: 20px;
+  margin-top:      8px;
+}
+
+div.post-vote-box {
+  margin-top:   8px;
+  margin-left: 16px;
+}
+
+div.post-title > h4 {
+  margin-top:    10px;
+  margin-bottom:  6px;
+}
+
+div.post-stats > p {
+  margin-bottom: 2px;
+}
+
+div.postdecorator-vote-box {
+  margin-top:  8px;
+  margin-left: 0px;
+}
+
+h3#post-title {
+  margin-top:    6px;
+  margin-bottom: 2px;
 }
