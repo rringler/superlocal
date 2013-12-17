@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
 	def show
-		@user = User.where(params[:id]).first.decorate
+		@user = User.where(id: params[:id]).first.decorate
 	end
 end

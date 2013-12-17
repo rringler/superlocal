@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
 	end
 
 	def edit
-		@board = Board.find(params[:id])
+		@board = Board.where(id: params[:id]).first
 	end
 
 	def update
