@@ -20,7 +20,7 @@ module Superlocal
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Load our app/services directory
-    config.autoload_paths += ["#{config.root}/app/services"]
+    # Prevent rails from initializing the environment on rake assets:precompile
+    config.assets.initialize_on_precompile = false
   end
 end
