@@ -20,17 +20,17 @@ gem 'thumbs_up'
 gem 'acts_as_follower'
 gem 'draper', '~> 1.3'
 
-group :development do
-	gem 'sqlite3'
-	gem 'mailcatcher'
-end
-
 group :development, :test do
+	gem 'sqlite3'
 	gem 'rspec-rails'
 	gem 'factory_girl_rails'
 	gem 'terminal-notifier-guard'
 	gem 'launchy'
 	gem 'betterlorem'
+end
+
+group :development do
+	gem 'mailcatcher'
 end
 
 group :test do
@@ -49,6 +49,7 @@ end
 
 group :production do
 	gem 'pg'
+	gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
