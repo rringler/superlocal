@@ -62,7 +62,7 @@ Superlocal::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Set default host for action_mailer
-  config.action_mailer.default_url_options = { :host => 'www.localhost' }
+  config.action_mailer.default_url_options = { :host => 'suprlocal.herokupapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

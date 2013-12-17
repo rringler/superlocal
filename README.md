@@ -32,9 +32,29 @@ Installation
    DEVISE_SECRET_KEY: '<devise secret key>'
    USPS_API_USERNAME: '<usps api username>'
    USPS_API_PASSWORD: '<usps api password>'
+   SENDGRID_USERNAME: '<sendgrid username>'
+   SENDGRID_PASSWORD: '<sendgrid password>'
    ```
 3. If deploying to Heroku, add these environmental variables to your production environment.
+4. If deploying to Heroku, pick an email provider.  Sendgrid is easy:
 
+    ```ruby
+    heroku addons:add sendgrid:starter
+    ```
+5.  Copy the new sendgrid configuration variables to your `/config/application.yml` file.
+6. Add the following to your `config/environment.rb` file:
+
+    ```ruby
+    ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['SENDGRID_USERNAME'],
+      :password       => ENV['SENDGRID_PASSWORD'],
+      :domain         => 'heroku.com',
+      :enable_starttls_auto => true
+    }
+    ```
 
 Credits
 =======
