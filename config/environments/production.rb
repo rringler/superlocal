@@ -61,8 +61,22 @@ Superlocal::Application.configure do
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
   # config.assets.precompile += %w( search.js )
 
+  # Set the action mailer to use smtp as its delivery method
+  config.action_mailer.delivery_method = :smtp
+
   # Set default host for action_mailer
-  config.action_mailer.default_url_options = { :host => 'suprlocal.herokupapp.com' }
+  config.action_mailer.default_url_options = { :host => 'http://suprlocal.herokuapp.com' }
+
+  # Set the smtp configuration options to work with Sendgrid
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 '587',
+    authentication:       :plain,
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
+    domain:               'heroku.com',
+    enable_starttls_auto: true
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
