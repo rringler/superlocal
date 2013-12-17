@@ -2,7 +2,12 @@ class VotesController < ApplicationController
 	before_filter :authenticate_user!
 
 	def vote
-		@voteable = params[:klass].constantize.find(params[:id])
+		@voteable = params[:type].downcase
+														 .gsub(/decorator/, "")
+														 .capitalize
+														 .constantize
+														 .where(id: params[:id])
+														 .first
 
 		if params[:direction] == 'up'
 		  current_user.up_vote(@voteable)

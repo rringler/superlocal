@@ -1,18 +1,28 @@
-<div class="vote_box">
-	<div class="vote up_arrow">
+<div class="vote <%= "#{voteable.class.to_s.downcase}-vote-box" %>">
+	<div class="vote up-arrow">
 		<%= link_to	content_tag(:span, nil, class: "glyphicon glyphicon-chevron-up"),
-								vote_path(klass: voteable.class,
+								vote_path(type: voteable.class
+																				.to_s
+																				.downcase
+																				.gsub(/decorator/, ""),
 													id: voteable.id,
 													direction: 'up'),
 								method: :post,
 								remote: true %>
 	</div>
-	<div id="<%= "#{voteable.class}_#{voteable.id}_tally" %>" class="vote tally">
+	<div id="<%= "#{voteable.class
+													.to_s
+													.downcase
+													.gsub(/decorator/, "")}-#{voteable.id}-tally" %>"
+			 class="vote vote-tally">
 		<%= voteable.plusminus %>
 	</div>
-	<div class="vote down_arrow">
+	<div class="vote down-arrow">
 		<%= link_to	content_tag(:span, nil, class: "glyphicon glyphicon-chevron-down"),
-								vote_path(klass: voteable.class,
+								vote_path(type: voteable.class
+																				.to_s
+																				.downcase
+																				.gsub(/decorator/, ""),
 													id: voteable.id,
 													direction: 'down'),
 								method: :post,

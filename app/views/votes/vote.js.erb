@@ -1,1 +1,3 @@
-$('div#<%= "#{@voteable.class}_#{@voteable.id}_tally" %>').html(<%= @voteable.plusminus %>);
+$('div#<%= "#{@voteable.class.to_s.downcase}"\
+           "-#{@voteable.id}"\
+           "-tally" %>').html(<%= @voteable.plusminus %>);
