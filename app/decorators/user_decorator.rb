@@ -8,4 +8,10 @@ class UserDecorator < Draper::Decorator
   def recent_comments
     object.comments.recent
   end
+
+  # Draper appears to have some issue delegating dynamic methods to the
+  # decorated object.
+  def following_boards
+    object.following_boards
+  end
 end
