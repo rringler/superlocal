@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-	before_filter :authenticate_user!, only: [:edit, :update, :destroy]
+	before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+	before_filter :comment_owner, only: [:edit, :update, :destroy]
 
 	def new
 		@comment = Comment.new(parent_id: params[:parent_id])
@@ -21,21 +22,35 @@ class CommentsController < ApplicationController
 		redirect_to board_post_path(@comment.post.board, @comment.post)
 	end
 
-	def show
-	end
+	#def show
+	#end
 
 	def edit
 	end
 
 	def update
+		if @comment.update_attributes(comment_params)
+			redirect_to board_post_path(@comment.post.board,
+																	@comment.post),
+									flash: { success: "Comment updated." }
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
+		@comment.destroy
 	end
 
 	private
 
 	def comment_params
 		params.require(:comment).permit(:board_id, :post_id, :parent_id, :text)
+	end
+
+	def comment_owner
+		@comment = Comment.where(id: params[:id]).first
+		redirect_to board_post_path(@comment.post.board,
+																@comment.post) unless @comment.user == current_user
 	end
 end

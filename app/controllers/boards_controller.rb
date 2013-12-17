@@ -27,6 +27,13 @@ class BoardsController < ApplicationController
 	end
 
 	def update
+		@board = Board.where(id: params[:id]).first
+
+		if @board.update_attributes(board_params)
+			redirect_to @board, flash: { success: "Board has been updated!" }
+		else
+			render 'edit'
+		end
 	end
 
 	private
