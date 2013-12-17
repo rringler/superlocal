@@ -41,7 +41,7 @@ class BoardDecorator < Draper::Decorator
     if object.posts.any?
       h.render partial: 'shared/post', collection: object.posts
     else
-      content_tag :p, "We ain't found shit."
+      h.content_tag :p, "We ain't found shit."
     end
   end
 end
