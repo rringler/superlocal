@@ -1,7 +1,11 @@
-<div class="comment-detail">
-  <div class="row comment-detail-title">
+<div class="comment-detail rounded-box">
+  <div class="row comment-post">
     <div class="col-sm-12">
-      <h5><%= link_to comment.post.title, board_post_path(comment.post.board, comment.post) %></h5>
+      <h5>
+        <small>posted to:</small>
+        <%= link_to comment.post.title, board_post_path(comment.post.board,
+                                                        comment.post) %>
+      </h5>
     </div>
   </div>
 
@@ -10,7 +14,7 @@
       <span><%= render 'shared/vote_box', voteable: comment %></span>
     </div>
     <div class="col-sm-10">
-      <div class="row">
+      <div class="row comment-header">
         <p>
           <% link_params = { board_id: comment.post.board,
                                    id: comment.post.id } %>
@@ -18,10 +22,10 @@
               "#{time_ago_in_words(comment.created_at)} ago".html_safe %>
         </p>
       </div>
-      <div class="row">
+      <div class="row comment-text">
         <p><%= comment.text %></p>
       </div>
-      <div class="row">
+      <div class="row comment-footer">
         <%= link_to 'Reply', new_board_post_comment_path(comment.post.board,
                                                          comment.post,
                                                          parent_id: comment.id) %>

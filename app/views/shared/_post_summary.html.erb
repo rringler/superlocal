@@ -13,8 +13,6 @@
 				<p>
 					submitted <%= time_ago_in_words(post.created_at) %> ago by
 					 <%= link_to post.user.username, post.user %>
-					 <%= " | posted in #{link_to post.board.title, board_path(post.board)}"
-					 		 .html_safe if (defined?(show_board) && show_board == true) %>
 				</p>
 			</div>
 			<div class="row post-comments">

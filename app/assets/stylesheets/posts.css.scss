@@ -29,12 +29,22 @@ div.post-title > h4 {
 }
 
 div.post-text {
-  margin-right: 15px;
+  @extend .rounded_box;
+  background-color: #f9faf9;
+
+  p {
+    margin-top: 10px;
+    margin-left: 8px;
+  }
+}
+
+div.post-stats > p {
+  margin-bottom: 0px;
 }
 
 div.postdecorator-vote-box {
   margin-top:  8px;
-  margin-left: 0px;
+  margin-left: 14px;
 }
 
 h3#post-title {

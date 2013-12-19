@@ -30,14 +30,20 @@ div.comment-vote-box {
   margin-left: 14px;
 }
 
-div.comment-header {
-  margin-top: 4px;
-
-  p {
+div.comment-post {
+  h5 {
+    margin-left: 16px;
     margin-bottom: 4px;
   }
 }
 
-div.comment-text > p {
-  margin-bottom: 4px;
+div.comment-header {
+  margin-top: 4px;
+
+  p { margin-bottom: 4px; }
+}
+
+div.comment-text {
+
+  p { margin-bottom: 4px; }
 }

@@ -9,26 +9,31 @@
 
 <hr />
 
-<%= render partial: 'shared/post_summary', object: @post, as: :post %>
+<div class="post-container">
 
-<div class="post-text">
+	<%= render partial: 'shared/post_summary', object: @post, as: :post %>
+
 	<div class="row">
-		<div class="col-sm-11 col-sm-offset-1 rounded_box">
-			<%= @post.text %>
+		<div class="col-sm-11 col-sm-offset-1">
+			<div class="post-text">
+				<p><%= @post.text %></p>
+			</div>
 		</div>
 	</div>
 </div>
 
 <hr />
 
-<% link_params = { board_id:  @board,
-									 post_id:   @post,
-									 parent_id: nil } %>
-<%= link_to 'Reply', new_board_post_comment_path(link_params),
-										 class: 'btn btn-primary',
-										 remote: true,
-										 method: :get %>
-<div id="<%= "comment-#{nil}-reply" %>" class="comment-reply-form"></div>
+<div class="post-reply">
+	<% link_params = { board_id:  @board,
+										 post_id:   @post,
+										 parent_id: nil } %>
+	<%= link_to 'Reply', new_board_post_comment_path(link_params),
+											 class: 'btn btn-primary',
+											 remote: true,
+											 method: :get %>
+	<div id="<%= "comment-#{nil}-reply" %>" class="comment-reply-form"></div>
+</div>
 
 <hr />
 
