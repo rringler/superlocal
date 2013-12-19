@@ -2,26 +2,30 @@
                                                     params[:post_id]),
                       method: :post do |f| %>
   <div class="row">
-    <div class="form-group">
-      <%= f.hidden_field :post_id, value: params[:post_id] %>
-      <%= f.hidden_field :parent_id, value: comment.parent_id %>
-      <%= f.label :text, "Commenting as: #{link_to current_user.username,
-                                                   current_user}".html_safe %>
-      <%= f.text_area :text, columns: 1,
-                             rows: 3,
-                             autofocus: true,
-                             class: "form-control" %>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <%= f.hidden_field :post_id, value: params[:post_id] %>
+        <%= f.hidden_field :parent_id, value: comment.parent_id %>
+        <%= f.label :text, "Commenting as: #{link_to current_user.username,
+                                                     current_user}".html_safe %>
+        <%= f.text_area :text, columns: 1,
+                               rows: 3,
+                               autofocus: true,
+                               class: "form-control" %>
+      </div>
     </div>
   </div>
 
   <div class="row">
-    <button type="submit" class="btn btn-primary">Save</button>
-    <% link_params = { board_id:  params[:board_id],
-                       post_id:   params[:post_id],
-                       parent_id: params[:parent_id] } %>
-    <%= link_to 'Cancel', new_board_post_comment_path(link_params),
-                         class: 'btn btn-default',
-                         remote: true,
-                         method: :get %>
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary">Save</button>
+      <% link_params = { board_id:  params[:board_id],
+                         post_id:   params[:post_id],
+                         parent_id: params[:parent_id] } %>
+      <%= link_to 'Cancel', new_board_post_comment_path(link_params),
+                           class: 'btn btn-default',
+                           remote: true,
+                           method: :get %>
+    </div>
   </div>
 <% end %>

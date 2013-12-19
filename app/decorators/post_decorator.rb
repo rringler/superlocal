@@ -3,11 +3,7 @@ class PostDecorator < Draper::Decorator
 
   def sub_title
     "submitted #{h.time_ago_in_words(object.created_at)} ago "\
-    "by #{h.link_to object.user.username}".html_safe
-  end
-
-  def stats
-    "#{object.comments.size} comments"
+    "by #{h.link_to object.user.username, object.user}".html_safe
   end
 
   def comments_block

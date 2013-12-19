@@ -37,9 +37,9 @@ class BoardDecorator < Draper::Decorator
     end
   end
 
-  def posts_block
+  def recent_posts
     if object.posts.any?
-      h.render partial: 'shared/post', collection: object.posts
+      h.render partial: 'shared/post_summary', collection: object.posts, as: :post
     else
       h.content_tag :p, "We ain't found shit."
     end
