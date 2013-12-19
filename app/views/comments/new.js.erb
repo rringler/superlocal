@@ -1,5 +1,18 @@
-if ($("<%= "div#comment-#{@comment.parent_id}-reply" %>").html() == '') {
-  $("<%= "div#comment-#{@comment.parent_id}-reply" %>").html("<%= j render partial: 'comments/form', locals: { comment: @comment } %>");
+var div_container = "<%= "div#comment-#{@comment.parent_id}-reply" %>";
+
+if ($(div_container).html() == '') {
+  var comment_form = "<%= j render partial: 'comments/form',
+                                   locals: { comment: @comment } %>";
+  $(div_container).html(comment_form);
+
+  $(div_container).parent()
+                  .find('a')
+                  .first()
+                  .hide();
 } else {
-  $("<%= "div#comment-#{@comment.parent_id}-reply" %>").html('');
+  $(div_container).html('');
+  $(div_container).parent()
+                  .find('a')
+                  .first()
+                  .show();
 }
