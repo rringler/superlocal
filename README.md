@@ -55,6 +55,8 @@ Installation
       :enable_starttls_auto => true
     }
     ```
+7. As of v3.1.0, Devise requires the secret key be available during asset precompilation.  Heroku's Cedar stack doesn't support this by default, but you can enable it using the `$ heroku labs:enable user-env-compile -a <appname>` command.
+
 
 Credits
 =======
