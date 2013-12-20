@@ -21,5 +21,4 @@ class ThumbsUpMigration < ActiveRecord::Migration
   def self.down
     drop_table :votes
   end
-
 end

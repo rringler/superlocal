@@ -17,24 +17,24 @@
 body { padding-top: 70px; }
 
 nav form {
-	padding-left: 6px;
-	padding-right: 6px;
+  padding-left: 6px;
+  padding-right: 6px;
 
-	input.login {
-		margin-bottom: 6px;
-	}
+  input.login {
+    margin-bottom: 6px;
+  }
 }
 
 .vote {
-	text-align: center;
+  text-align: center;
 
-	&.up-arrow {
-		padding-left: 2px;
-	}
+  &.up-arrow {
+    padding-left: 2px;
+  }
 
-	&.vote-tally {
-		font-weight: bolder;
-		font-size: 1.2em;
-		color: rgb(66,139,202);
-	}
+  &.vote-tally {
+    font-weight: bolder;
+    font-size: 1.2em;
+    color: rgb(66,139,202);
+  }
 }

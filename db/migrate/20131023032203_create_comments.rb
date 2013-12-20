@@ -1,9 +1,9 @@
 class CreateComments < ActiveRecord::Migration
   def up
     create_table :comments do |t|
-    	t.integer			:user_id,   :null => false
-    	t.integer			:post_id,   :null => false
-    	t.text				:text, 		  :null => false
+      t.integer     :user_id,   :null => false
+      t.integer     :post_id,   :null => false
+      t.text        :text,      :null => false
 
       t.timestamps
     end
@@ -13,6 +13,6 @@ class CreateComments < ActiveRecord::Migration
   end
 
   def down
-  	drop_table :comments
+    drop_table :comments
   end
 end

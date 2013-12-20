@@ -1,27 +1,27 @@
 <div class="row">
-	<div class="col-sm-10">
-		<%= @board.title_block %>
-	</div>
+  <div class="col-sm-10">
+    <%= @board.title_block %>
+  </div>
 
-	<div class="col-sm-2">
-		<%= @board.subscribe_button(class: "pull-right") %>
-	</div>
+  <div class="col-sm-2">
+    <%= @board.subscribe_button(class: "pull-right") %>
+  </div>
 </div>
 
 <hr />
 
 <div class="row">
-	<div class="col-sm-12">
-		<%= @board.new_post_link %>
-	</div>
+  <div class="col-sm-12">
+    <%= @board.new_post_link %>
+  </div>
 </div>
 
 <hr />
 
 <div class="row">
-	<div class="col-sm-12">
-		<h4>Recent posts:</h4>
-	</div>
+  <div class="col-sm-12">
+    <h4>Recent posts:</h4>
+  </div>
 </div>
 
 <%= @board.recent_posts %>

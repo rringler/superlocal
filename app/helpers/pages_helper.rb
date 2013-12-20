@@ -1,5 +1,5 @@
 module PagesHelper
-	def resource_name
+  def resource_name
     :user
   end
 

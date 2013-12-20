@@ -1,59 +1,59 @@
 <div class="row">
-	<div class="col-sm-8">
-		<h2><%= @user.username %>'s profile</h2>
-	</div>
+  <div class="col-sm-8">
+    <h2><%= @user.username %>'s profile</h2>
+  </div>
 </div>
 
 <hr />
 
 <% if @user == current_user && @user.following_boards %>
-	<section id="followed-boards">
-		<div class="row">
-			<div class="col-sm-12">
-				<h4>Board subscriptions:</h4>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<ul>
-					<% @user.following_boards.each do |board| %>
-						<li>
-							<h4>
-								<%= link_to board.title, board %> |
-								<small><%= board.description%></small>
-							</h4>
-						</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</section>
+  <section id="followed-boards">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Board subscriptions:</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <ul>
+          <% @user.following_boards.each do |board| %>
+            <li>
+              <h4>
+                <%= link_to board.title, board %> |
+                <small><%= board.description%></small>
+              </h4>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-	<hr />
+  <hr />
 <% end %>
 
 <% if @user.recent_posts %>
-	<section id="posts">
-		<div class="row">
-			<div class="col-sm-12">
-				<h4>Recent posts:</h4>
-			</div>
-		</div>
-		<%= render partial: 'shared/post_summary', collection: @user.recent_posts,
-																							 as: :post %>
-	</section>
+  <section id="posts">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Recent posts:</h4>
+      </div>
+    </div>
+    <%= render partial: 'shared/post_summary', collection: @user.recent_posts,
+                                               as: :post %>
+  </section>
 
-	<hr />
+  <hr />
 <% end %>
 
 <% if @user.recent_comments %>
-	<section id="comments">
-		<div class="row">
-			<div class="col-sm-12">
-				<h4>Recent comments:</h4>
-			</div>
-		</div>
-		<%= render partial: 'shared/comment_detail', collection: @user.recent_comments,
-																								 as: :comment %>
-	</section>
+  <section id="comments">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>Recent comments:</h4>
+      </div>
+    </div>
+    <%= render partial: 'shared/comment_detail', collection: @user.recent_comments,
+                                                 as: :comment %>
+  </section>
 <% end %>

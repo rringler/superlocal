@@ -2,9 +2,9 @@
 
 FactoryGirl.define do
   factory :address do
-  	address2 "1800 Cabrillo Memorial Dr."
-  	city 		 "San Diego"
-  	state    "CA"
-  	zip5     "92106"
+    address2 "1800 Cabrillo Memorial Dr."
+    city     "San Diego"
+    state    "CA"
+    zip5     "92106"
   end
 end

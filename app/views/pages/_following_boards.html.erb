@@ -1,18 +1,18 @@
 <% if user_signed_in? && current_user.following_boards.size %>
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="well">
-				<h3>Boards you follow:</h3>
-				<ul>
-					<% current_user.following_boards.each do |board| %>
-						<li>
-							<h4><%= link_to board.title, board_path(board) %> |
-									<small><%= board.slug %></small>
-							</h4>
-						</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="well">
+        <h3>Boards you follow:</h3>
+        <ul>
+          <% current_user.following_boards.each do |board| %>
+            <li>
+              <h4><%= link_to board.title, board_path(board) %> |
+                  <small><%= board.slug %></small>
+              </h4>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 <% end %>

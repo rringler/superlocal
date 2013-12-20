@@ -1,23 +1,23 @@
 <div class="post-summary rounded_box">
-	<div class="row">
-		<div class="col-sm-1">
-			<span>
-				<%= render 'shared/vote_box', voteable: post %>
-			</span>
-		</div>
-		<div class="col-sm-11">
-			<div class="row post-title">
-				<h4><%= link_to post.title, board_post_path(post.board.id, post.id) %></h4>
-			</div>
-			<div class="row post-stats">
-				<p>
-					submitted <%= time_ago_in_words(post.created_at) %> ago by
-					 <%= link_to post.user.username, post.user %>
-				</p>
-			</div>
-			<div class="row post-comments">
-				<%= link_to "#{post.comments.size} comments", board_post_path(post.board.id, post.id) %>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-1">
+      <span>
+        <%= render 'shared/vote_box', voteable: post %>
+      </span>
+    </div>
+    <div class="col-sm-11">
+      <div class="row post-title">
+        <h4><%= link_to post.title, board_post_path(post.board.id, post.id) %></h4>
+      </div>
+      <div class="row post-stats">
+        <p>
+          submitted <%= time_ago_in_words(post.created_at) %> ago by
+           <%= link_to post.user.username, post.user %>
+        </p>
+      </div>
+      <div class="row post-comments">
+        <%= link_to "#{post.comments.size} comments", board_post_path(post.board.id, post.id) %>
+      </div>
+    </div>
+  </div>
 </div>

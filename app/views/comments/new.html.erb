@@ -1,9 +1,9 @@
 <div class="row">
-	<% if @parent %>
-		<%= render partial: 'shared/comment', locals: { comment: @comment.parent } %>
-	<% else %>
-		<%= render partial: 'shared/post', locals: { post: @comment.post } %>
-	<% end %>
+  <% if @parent %>
+    <%= render partial: 'shared/comment', locals: { comment: @comment.parent } %>
+  <% else %>
+    <%= render partial: 'shared/post', locals: { post: @comment.post } %>
+  <% end %>
 </div>
 
 <%= render partial: 'comments/form', locals: { comment: @comment } %>

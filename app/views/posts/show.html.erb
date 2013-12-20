@@ -1,48 +1,48 @@
 <div class="row">
-	<div class="col-sm-10">
-		<%= @board.title_block %>
-	</div>
-	<div class="col-sm-2">
-		<%= @board.subscribe_button(class: "pull-right") %>
-	</div>
+  <div class="col-sm-10">
+    <%= @board.title_block %>
+  </div>
+  <div class="col-sm-2">
+    <%= @board.subscribe_button(class: "pull-right") %>
+  </div>
 </div>
 
 <hr />
 
 <div class="post-container">
 
-	<%= render partial: 'shared/post_summary', object: @post, as: :post %>
+  <%= render partial: 'shared/post_summary', object: @post, as: :post %>
 
-	<div class="row">
-		<div class="col-sm-11 col-sm-offset-1">
-			<div class="post-text">
-				<p><%= @post.text %></p>
-			</div>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-11 col-sm-offset-1">
+      <div class="post-text">
+        <p><%= @post.text %></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <hr />
 
 <div class="post-reply">
-	<% link_params = { board_id:  @board,
-										 post_id:   @post,
-										 parent_id: nil } %>
-	<%= link_to 'Reply', new_board_post_comment_path(link_params),
-											 class: 'btn btn-primary',
-											 remote: true,
-											 method: :get %>
-	<div id="<%= "comment-#{nil}-reply" %>" class="comment-reply-form"></div>
+  <% link_params = { board_id:  @board,
+                     post_id:   @post,
+                     parent_id: nil } %>
+  <%= link_to 'Reply', new_board_post_comment_path(link_params),
+                       class: 'btn btn-primary',
+                       remote: true,
+                       method: :get %>
+  <div id="<%= "comment-#{nil}-reply" %>" class="comment-reply-form"></div>
 </div>
 
 <hr />
 
 <div class="comments-container">
-	<div class="row">
-		<div class="col-sm-12">
-			<h4>Recent comments:</h4>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h4>Recent comments:</h4>
+    </div>
+  </div>
 
-	<%= @post.comments_block %>
+  <%= @post.comments_block %>
 </div>

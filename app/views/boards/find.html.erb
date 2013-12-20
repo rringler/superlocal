@@ -1,13 +1,13 @@
 <h2>This locale does not exist.</h2>
 
 <% if user_signed_in? %>
-	<h4><em>Would you like to create it?</em></h4>
+  <h4><em>Would you like to create it?</em></h4>
 
-	<%= render 'boards/form' %>
+  <%= render 'boards/form' %>
 
 <% else %>
-	<h4><em>If you had an account, you could create it.</em></h4>
+  <h4><em>If you had an account, you could create it.</em></h4>
 
-	<% link_to "Create an account?", new_user_registration_path %>
+  <% link_to "Create an account?", new_user_registration_path %>
 
 <% end %>

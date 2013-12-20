@@ -1,27 +1,27 @@
 <div class="row">
-	<div class="col-sm-1">
-		<span><%= render 'shared/vote_box', voteable: comment %></span>
-	</div>
-	<div class="col-sm-10">
-		<div class="row comment-header">
-			<p>
-				<%= "#{link_to comment.user.username, comment.user} | posted "\
-					  "#{time_ago_in_words(comment.created_at)} ago".html_safe %>
-			</p>
-		</div>
-		<div class="row comment-text">
-			<p><%= comment.text %></p>
-		</div>
-		<div class="row comment-footer">
-			<small>
-				<% link_params = { board_id:  comment.post.board,
-													 post_id:   comment.post,
-													 parent_id: comment.id } %>
-				<%= link_to 'Reply', new_board_post_comment_path(link_params),
-														 remote: true,
-														 method: :get %>
-			</small>
-			<div id="<%= "comment-#{comment.id}-reply" %>"></div>
-		</div>
-	</div>
+  <div class="col-sm-1">
+    <span><%= render 'shared/vote_box', voteable: comment %></span>
+  </div>
+  <div class="col-sm-10">
+    <div class="row comment-header">
+      <p>
+        <%= "#{link_to comment.user.username, comment.user} | posted "\
+            "#{time_ago_in_words(comment.created_at)} ago".html_safe %>
+      </p>
+    </div>
+    <div class="row comment-text">
+      <p><%= comment.text %></p>
+    </div>
+    <div class="row comment-footer">
+      <small>
+        <% link_params = { board_id:  comment.post.board,
+                           post_id:   comment.post,
+                           parent_id: comment.id } %>
+        <%= link_to 'Reply', new_board_post_comment_path(link_params),
+                             remote: true,
+                             method: :get %>
+      </small>
+      <div id="<%= "comment-#{comment.id}-reply" %>"></div>
+    </div>
+  </div>
 </div>

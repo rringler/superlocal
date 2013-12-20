@@ -2,19 +2,19 @@
   <% if @board.errors.any? %>
     <div class="row">
       <div class="col-sm-10">
-      	<div class="alert alert-danger">
-      		<h4><%= pluralize(@board.errors.count, "error") %> prohibited
+        <div class="alert alert-danger">
+          <h4><%= pluralize(@board.errors.count, "error") %> prohibited
                   this board from being saved:
           </h4>
-      		<ul>
-    				<% @board.errors.full_messages.each do |msg| %>
-    					<li><%= msg %></li>
-    				<% end %>
-    			</ul>
+          <ul>
+            <% @board.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
         </div>
       </div>
-		</div>
-	<% end %>
+    </div>
+  <% end %>
 
   <%= f.hidden_field :slug, value: @board.slug %>
 

@@ -6,7 +6,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'coffee-script-source', '1.5.0' # stupid hack because 1.6.3 does not show
-																	  # line numbers in error messages
+                                    # line numbers in error messages
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 gem 'uglifier', '>= 1.3.0'
 gem 'newrelic_rpm'
@@ -21,25 +21,25 @@ gem 'acts_as_follower'
 gem 'draper', '~> 1.3'
 
 group :development, :test do
-	gem 'sqlite3'
-	gem 'rspec-rails'
-	gem 'factory_girl_rails'
-	gem 'terminal-notifier-guard'
-	gem 'launchy'
-	gem 'betterlorem'
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'terminal-notifier-guard'
+  gem 'launchy'
+  gem 'betterlorem'
 end
 
 group :development do
-	gem 'mailcatcher'
+  gem 'mailcatcher'
 end
 
 group :test do
-	gem 'capybara'
-	gem 'database_cleaner', '>= 1.2.0'
-	gem 'spork-rails', github: 'sporkrb/spork-rails'
-	gem 'guard-rspec'
-	gem 'guard-spork'
-	gem 'rb-fsevent'
+  gem 'capybara'
+  gem 'database_cleaner', '>= 1.2.0'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'rb-fsevent'
 end
 
 group :doc do
@@ -48,8 +48,8 @@ group :doc do
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
