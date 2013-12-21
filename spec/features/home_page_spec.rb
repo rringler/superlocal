@@ -47,7 +47,7 @@ describe 'home page' do
 
         it 'should redirect to board#show' do
           page.should have_css("h2", text: @board.title)
-          page.should have_css("h4", text: @board.description)
+          page.should have_css("h2 > small", text: @board.description)
         end
       end
 
@@ -66,7 +66,7 @@ describe 'home page' do
         end
 
         it 'should offer to create the board' do
-          page.should have_css("h2", text: "Would you like to create it?")
+          page.should have_css("h4", text: "Would you like to create it?")
           page.should have_css("input#board_title")
           page.should have_css("input#board_description")
         end
@@ -92,7 +92,7 @@ describe 'home page' do
 
         it 'should redirect to board#show' do
           page.should have_css("h2", text: @board.title)
-          page.should have_css("h4", text: @board.description)
+          page.should have_css("h2 > small", text: @board.description)
         end
       end
 
@@ -111,7 +111,7 @@ describe 'home page' do
         end
 
         it 'should not offer to create the board' do
-          page.should have_css("h2", text: "If you had an account, you could create it.")
+          page.should have_css("h4", text: "If you had an account, you could create it.")
           page.should_not have_css("input#board_title")
         end
       end

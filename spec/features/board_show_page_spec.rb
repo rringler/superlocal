@@ -55,7 +55,7 @@ describe 'Boards#show page' do
 
     context 'when the board has posts' do
       it 'should display the most recent posts' do
-        save_and_open_page
+        #save_and_open_page
 
         @root_posts.each do |root_post|
           page.should have_css('h4', text: root_post.title)

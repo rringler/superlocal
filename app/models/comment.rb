@@ -8,7 +8,9 @@ class Comment < ActiveRecord::Base
 
   scope :recent, ->(limit = 10) { order('created_at DESC').limit(limit) }
 
-  validates :text, presence: true
+  validates :user_id, presence: true
+  validates :post_id, presence: true
+  validates :text,    presence: true
 
   def parent
     Comment.where(id: parent_id).first

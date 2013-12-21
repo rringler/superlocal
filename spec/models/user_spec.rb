@@ -1,39 +1,39 @@
 require 'spec_helper'
 
 describe User do
-  it 'has valid factories' do
+  it 'should have valid factories' do
     FactoryGirl.create(:user).should be_valid
     FactoryGirl.create(:confirmed_user).should be_valid
   end
 
   describe 'validations' do
     describe 'username' do
-      it 'is present' do
+      it 'should be present' do
         FactoryGirl.build(:user, username: nil).should_not be_valid
       end
 
-      it 'is unique' do
+      it 'should be unique' do
         user1 = FactoryGirl.create(:user)
         user2 = FactoryGirl.build(:user, username: user1.username).should_not be_valid
       end
 
-      it 'is not case sensitive' do
+      it 'should not be case sensitive' do
         user1 = FactoryGirl.create(:user)
         user2 = FactoryGirl.build(:user, username: user1.username.downcase).should_not be_valid
       end
     end
 
     describe 'email' do
-      it 'cannot be nil' do
+      it 'should be present' do
         FactoryGirl.build(:user, email: nil).should_not be_valid
       end
 
-      it 'is unique' do
+      it 'should be unique' do
         user1 = FactoryGirl.create(:user)
         user2 = FactoryGirl.build(:user, email: user1.email).should_not be_valid
       end
 
-      it 'is not case sensitive' do
+      it 'should not be case sensitive' do
         user1 = FactoryGirl.create(:user)
         user2 = FactoryGirl.build(:user, email: user1.email.downcase).should_not be_valid
       end
@@ -44,32 +44,42 @@ describe User do
     let(:user) { FactoryGirl.create(:user) }
 
     describe '#up_vote' do
-      let(:voteable_object) { FactoryGirl.create(:post) }
+      let(:post) { FactoryGirl.create(:post) }
 
       it 'should increment the plusminus tally if '\
          'the user has not already upvoted the object' do
-        expect { user.up_vote(voteable_object) }.to change(voteable_object, :plusminus).by(1)
+        expect { user.up_vote(post) }.to change(post, :plusminus).by(1)
       end
 
       it 'should delete the previous upvote if '\
          'the user has already upvoted the object' do
-        user.up_vote(voteable_object)
-        expect { user.up_vote(voteable_object) }.to change(voteable_object, :plusminus).by(-1)
+        user.up_vote(post)
+        expect { user.up_vote(post) }.to change(post, :plusminus).by(-1)
+      end
+
+      it 'should not increment the upvote if '\
+         'the user owns the voteable object' do
+        expect { post.user.up_vote(post) }.to change(post, :plusminus).by(0)
       end
     end
 
     describe '#down_vote' do
-      let(:voteable_object) { FactoryGirl.create(:post) }
+      let(:post) { FactoryGirl.create(:post) }
 
       it 'should decrement the plusminus tally if '\
          'the user has not already downvoted the object' do
-        expect { user.down_vote(voteable_object) }.to change(voteable_object, :plusminus).by(-1)
+        expect { user.down_vote(post) }.to change(post, :plusminus).by(-1)
       end
 
       it 'should delete the previous downvote if '\
          'the user has already downvoted the object' do
-        user.down_vote(voteable_object)
-        expect { user.down_vote(voteable_object) }.to change(voteable_object, :plusminus).by(1)
+        user.down_vote(post)
+        expect { user.down_vote(post) }.to change(post, :plusminus).by(1)
+      end
+
+      it 'should not decrement the upvote if '\
+         'the user owns the voteable object' do
+        expect { post.user.down_vote(post) }.to change(post, :plusminus).by(0)
       end
     end
 

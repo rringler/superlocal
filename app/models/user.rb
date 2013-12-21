@@ -25,11 +25,15 @@ class User < ActiveRecord::Base
 
   # Voting
   def up_vote(voteable)
-    voted_for?(voteable) ? unvote_for(voteable) : vote_exclusively_for(voteable)
+    unless voteable.user == self
+      voted_for?(voteable) ? unvote_for(voteable) : vote_exclusively_for(voteable)
+    end
   end
 
   def down_vote(voteable)
-    voted_against?(voteable) ? unvote_for(voteable) : vote_exclusively_against(voteable)
+    unless voteable.user == self
+      voted_against?(voteable) ? unvote_for(voteable) : vote_exclusively_against(voteable)
+    end
   end
 
   #Following
