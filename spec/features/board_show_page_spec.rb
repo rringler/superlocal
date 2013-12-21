@@ -44,6 +44,10 @@ describe 'Boards#show page' do
       page.should have_link('Create new post')
     end
 
+    it 'should have a subscribe button' do
+      page.should have_button('Subscribe')
+    end
+
     it 'should show the new post form when the new post link is clicked' do
       click_link 'Create new post'
 
@@ -51,6 +55,21 @@ describe 'Boards#show page' do
       page.should have_field('post[title]')
       page.should have_field('post[link]')
       page.should have_field('post[text]')
+    end
+
+    it 'should create a new post when the form is submitted' do
+      click_link 'Create new post'
+
+      fill_in 'post[title]', with: "Brand New Post"
+      fill_in 'post[text]',  with: "This is a new post."
+
+      expect { click_button 'Create' }.to change(Post, :count).by(1)
+    end
+
+    it 'should create a new subscription when the subscribe button is clicked' do
+      click_button 'Subscribe'
+
+      @user.follow_count.should eq(1)
     end
 
     context 'when the board has posts' do

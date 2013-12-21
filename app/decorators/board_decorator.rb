@@ -14,14 +14,15 @@ class BoardDecorator < Draper::Decorator
       btn_text  = h.current_user.following?(object) ? 'Unsubscribe' : 'Subscribe'
       btn_class = h.current_user.following?(object) ? 'btn-default' : 'btn-primary'
 
-      params = { type: object.class.to_s.downcase,
-                   id: object.id }
-
-      h.link_to "#{btn_text}", h.follow_path(params),
-                               id: 'subscribe-button',
-                               class: "btn #{btn_class} #{params[:type]}-subscribe-btn",
-                               remote: true,
-                               method: :post
+      h.form_tag h.follow_path, method: :post, remote: true do
+        "#{h.hidden_field_tag 'type', object.class.to_s.downcase} "\
+        "#{h.hidden_field_tag 'id', object.id} "\
+        "#{h.submit_tag btn_text, class: "btn
+                                        #{btn_class}
+                                        #{object.class.to_s.downcase}-subscribe-btn
+                                          pull-right",
+                                  id: 'subscribe-button' }".html_safe
+      end
     end
   end
 

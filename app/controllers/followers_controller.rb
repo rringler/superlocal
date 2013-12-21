@@ -11,6 +11,7 @@ class FollowersController < ApplicationController
     current_user.toggle_following(followable)
 
     respond_to do |format|
+      format.html { redirect_to followable }
       format.js
     end
   end
