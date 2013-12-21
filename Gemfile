@@ -40,6 +40,7 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'rb-fsevent'
+  gem 'simplecov'
 end
 
 group :doc do

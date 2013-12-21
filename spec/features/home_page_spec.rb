@@ -1,5 +1,4 @@
 require 'spec_helper'
-include Devise::TestHelpers
 
 describe 'home page' do
   let(:address) do
