@@ -10,17 +10,19 @@ class BoardDecorator < Draper::Decorator
   end
 
   def subscribe_button(params={})
-    btn_text  = h.current_user.following?(object) ? 'Unsubscribe' : 'Subscribe'
-    btn_class = h.current_user.following?(object) ? 'btn-default' : 'btn-primary'
+    if h.user_signed_in?
+      btn_text  = h.current_user.following?(object) ? 'Unsubscribe' : 'Subscribe'
+      btn_class = h.current_user.following?(object) ? 'btn-default' : 'btn-primary'
 
-    params = { type: object.class.to_s.downcase,
-                 id: object.id }
+      params = { type: object.class.to_s.downcase,
+                   id: object.id }
 
-    h.link_to "#{btn_text}", h.follow_path(params),
-                             id: 'subscribe-button',
-                             class: "btn #{btn_class} #{params[:type]}-subscribe-btn",
-                             remote: true,
-                             method: :post
+      h.link_to "#{btn_text}", h.follow_path(params),
+                               id: 'subscribe-button',
+                               class: "btn #{btn_class} #{params[:type]}-subscribe-btn",
+                               remote: true,
+                               method: :post
+    end
   end
 
   def new_post_link
