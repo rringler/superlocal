@@ -23,7 +23,7 @@ class AddressValidator
     xml_data = REXML::Document.new(response.body)
 
     # Debug testing
-    puts xml_data
+    Rails.logger.info xml_data
 
     unless xml_data.elements["//Error"]
       { address1: nil,
