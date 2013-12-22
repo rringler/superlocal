@@ -1,4 +1,14 @@
-<div class="comment comment-detail rounded-box">
+<div class="comment comment-summary rounded-box">
+  <div class="row comment-post">
+    <div class="col-sm-12">
+      <h5>
+        <small>posted to:</small>
+        <%= link_to comment.post.title, board_post_path(comment.post.board,
+                                                        comment.post) %>
+      </h5>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-sm-1">
       <span><%= render 'shared/vote_box', voteable: comment %></span>
@@ -22,6 +32,7 @@
                                remote: true,
                                method: :get %>
         </small>
+        <div id="<%= "comment-#{comment.id}-reply" %>"></div>
       </div>
     </div>
   </div>

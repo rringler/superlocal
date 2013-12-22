@@ -13,11 +13,11 @@
 
   <%= render 'layouts/navbar' %>
 
-  <div class="container">
+  <main class="container">
     <%= render 'layouts/flash' %>
 
     <%= yield %>
-  </div>
+  </main>
 
   <%= debug(params) unless Rails.env.production? %>
   </body>

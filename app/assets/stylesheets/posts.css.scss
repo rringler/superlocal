@@ -2,34 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.rounded_box {
-  border: 1px solid #cccccc;
-  border-radius: 10px;
-}
-
-div.post-summary {
+div.post {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-div.post {
-  margin-top:      8px;
-  padding-top:    20px;
-  padding-bottom: 20px;
+div.post-board {
+  h5 {
+    margin-left: 18px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
 }
 
-div.post-vote-box {
+div.post-vote-box, div.postdecorator-vote-box {
   margin-top:   8px;
-  margin-left: 16px;
+  margin-left: 14px;
 }
 
-div.post-title > h4 {
-  margin-top:    10px;
-  margin-bottom:  6px;
+div.post-title {
+  h4 {
+    margin-top:    10px;
+    margin-bottom:  6px;
+  }
 }
 
 div.post-text {
-  @extend .rounded_box;
   background-color: #f9faf9;
 
   p {
@@ -40,16 +38,6 @@ div.post-text {
 
 div.post-stats > p {
   margin-bottom: 0px;
-}
-
-div.postdecorator-vote-box {
-  margin-top:  8px;
-  margin-left: 14px;
-}
-
-h3#post-title {
-  margin-top:    6px;
-  margin-bottom: 2px;
 }
 
 div.comment-reply-form {
