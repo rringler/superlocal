@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row board">
   <div class="col-sm-10">
     <%= @board.title_block %>
   </div>
@@ -25,10 +25,7 @@
 <hr />
 
 <div class="post-reply">
-  <% link_params = { board_id:  @board,
-                     post_id:   @post,
-                     parent_id: nil } %>
-  <%= link_to 'Reply', new_board_post_comment_path(link_params),
+  <%= link_to 'Reply', new_board_post_comment_path(post_id: @post, parent_id: nil),
                        class: 'btn btn-primary',
                        remote: true,
                        method: :get %>

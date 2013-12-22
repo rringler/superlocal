@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   before_filter :comment_owner, only: [:edit, :update, :destroy]
 
   def new
-    @comment = Comment.new(parent_id: params[:parent_id])
+    @comment = Comment.new(post_id:   params[:post_id],
+                           parent_id: params[:parent_id])
 
     respond_to do |format|
       format.html
@@ -45,7 +46,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:board_id, :post_id, :parent_id, :text)
+    params.require(:comment).permit(:post_id, :parent_id, :text)
   end
 
   def comment_owner

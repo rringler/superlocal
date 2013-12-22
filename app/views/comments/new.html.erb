@@ -1,8 +1,8 @@
 <div class="row">
   <% if @parent %>
-    <%= render partial: 'shared/comment', locals: { comment: @comment.parent } %>
+    <%= render partial: 'shared/comment_summary', object: @comment.parent, as: :comment %>
   <% else %>
-    <%= render partial: 'shared/post', locals: { post: @comment.post } %>
+    <%= render partial: 'shared/post_summary', object: @comment.post, as: :post %>
   <% end %>
 </div>
 
