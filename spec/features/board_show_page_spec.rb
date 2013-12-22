@@ -106,6 +106,7 @@ describe 'Boards#show page' do
 
       click_link 'Create new post'
 
+      current_path.should eq(new_user_session_path)
       page.should have_css('h2', text: 'Sign in')
       page.should have_field('user[login]')
       page.should have_field('user[password]')

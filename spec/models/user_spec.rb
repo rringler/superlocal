@@ -46,40 +46,46 @@ describe User do
     describe '#up_vote' do
       let(:post) { FactoryGirl.create(:post) }
 
-      it 'should increment the plusminus tally if '\
-         'the user has not already upvoted the object' do
-        expect { user.up_vote(post) }.to change(post, :plusminus).by(1)
+      context 'when the voteable object was created by another user' do
+        it 'should increment the plusminus tally if '\
+           'the user has not already upvoted the object' do
+          expect { user.up_vote(post) }.to change(post, :plusminus).by(1)
+        end
+
+        it 'should delete the previous upvote if '\
+           'the user has already upvoted the object' do
+          user.up_vote(post)
+          expect { user.up_vote(post) }.to change(post, :plusminus).by(-1)
+        end
       end
 
-      it 'should delete the previous upvote if '\
-         'the user has already upvoted the object' do
-        user.up_vote(post)
-        expect { user.up_vote(post) }.to change(post, :plusminus).by(-1)
-      end
-
-      it 'should not increment the upvote if '\
-         'the user owns the voteable object' do
-        expect { post.user.up_vote(post) }.to change(post, :plusminus).by(0)
+      context 'when the voteable object was created by the user' do
+        it 'should not increment the plusminus tally' do
+          expect { post.user.up_vote(post) }.to change(post, :plusminus).by(0)
+        end
       end
     end
 
     describe '#down_vote' do
       let(:post) { FactoryGirl.create(:post) }
 
-      it 'should decrement the plusminus tally if '\
-         'the user has not already downvoted the object' do
-        expect { user.down_vote(post) }.to change(post, :plusminus).by(-1)
+      context 'when the voteable object was created by another user' do
+        it 'should decrement the plusminus tally if '\
+           'the user has not already downvoted the object' do
+          expect { user.down_vote(post) }.to change(post, :plusminus).by(-1)
+        end
+
+        it 'should delete the previous downvote if '\
+           'the user has already downvoted the object' do
+          user.down_vote(post)
+          expect { user.down_vote(post) }.to change(post, :plusminus).by(1)
+        end
       end
 
-      it 'should delete the previous downvote if '\
-         'the user has already downvoted the object' do
-        user.down_vote(post)
-        expect { user.down_vote(post) }.to change(post, :plusminus).by(1)
-      end
-
-      it 'should not decrement the upvote if '\
-         'the user owns the voteable object' do
-        expect { post.user.down_vote(post) }.to change(post, :plusminus).by(0)
+      context 'when the voteable object was created by the user' do
+        it 'should not decrement the plusminus tally' do
+          expect { post.user.down_vote(post) }.to change(post, :plusminus).by(0)
+        end
       end
     end
 

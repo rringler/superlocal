@@ -8,7 +8,7 @@ FactoryGirl.define do
     slug            "1800-cabrillo-memorial-dr-92106"
   end
 
-  factory :unique_board do
+  factory :unique_board, class: Board do
     title           BetterLorem.w(5, true)
     description     BetterLorem.p(2, true)
     sequence(:slug) { |n| "test_board_slug_%04d" % n }

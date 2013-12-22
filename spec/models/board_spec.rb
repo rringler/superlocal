@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Board do
   it 'should have valid factories' do
     FactoryGirl.create(:board).should be_valid
+    FactoryGirl.create(:unique_board).should be_valid
   end
 
   describe 'validations' do

@@ -29,6 +29,15 @@ describe 'home page' do
       visit root_path
     end
 
+    it 'should show the most recent posts' do
+      boards = Array(1..5).map { FactoryGirl.create(:unique_board) }
+      @posts = boards.each { |board| FactoryGirl.create(:post, board: board) }
+
+      visit root_path
+
+      page.should have_css("div.post-title", count: 5)
+    end
+
     context 'and searches for a board' do
       context 'and the board exists' do
         before(:each) do
@@ -74,6 +83,15 @@ describe 'home page' do
   end
 
   context 'when the user is not signed in' do
+    it 'should show the most recent posts' do
+      boards = Array(1..5).map { FactoryGirl.create(:unique_board) }
+      @posts = boards.each { |board| FactoryGirl.create(:post, board: board) }
+
+      visit root_path
+
+      page.should have_css("div.post-title", count: 5)
+    end
+
     context 'and searches for a board' do
       context 'and the board exists' do
         before(:each) do
