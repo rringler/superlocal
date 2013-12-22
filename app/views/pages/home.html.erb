@@ -1,3 +1,45 @@
-<%= render 'following_boards', current_user: current_user %>
+<section id="recent_posts">
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Recent posts:</h3>
+    </div>
+  </div>
 
-<%= render 'find_board' %>
+  <%= render partial: 'shared/post_summary', collection: @recent_posts,
+                                             as: :post %>
+</section>
+
+<section id="following_boards">
+  <% if user_signed_in? && current_user.following_boards.size %>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Boards you follow:</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <ul>
+          <% current_user.following_boards.each do |board| %>
+            <li>
+              <h4>
+                <%= link_to board.title, board_path(board) %> |
+                <small><%= board.slug %></small>
+              </h4>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<section id="find_board">
+  <div class="row">
+    <div class="col-sm-12">
+        <h3>Find a board:</h3>
+    </div>
+  </div>
+
+  <%= render partial: 'shared/board_search_form' %>
+</section>
