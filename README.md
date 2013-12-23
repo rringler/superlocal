@@ -29,18 +29,14 @@ Installation
    ```ruby
    RAILS_SECRET_KEY_BASE: '<rails secret key>'
    NEW_RELIC_LICENSE_KEY: '<newrelic license key>'
-   DEVISE_SECRET_KEY: '<devise secret key>'
-   USPS_API_USERNAME: '<usps api username>'
-   USPS_API_PASSWORD: '<usps api password>'
-   SENDGRID_USERNAME: '<sendgrid username>'
-   SENDGRID_PASSWORD: '<sendgrid password>'
+   DEVISE_SECRET_KEY:     '<devise secret key>'
+   USPS_API_USERNAME:     '<usps api username>'
+   USPS_API_PASSWORD:     '<usps api password>'
+   SENDGRID_USERNAME:     '<sendgrid username>'
+   SENDGRID_PASSWORD:     '<sendgrid password>'
    ```
-3. If deploying to Heroku, add these environmental variables to your production environment.
-4. If deploying to Heroku, pick an email provider.  Sendgrid is easy:
-
-    ```ruby
-    heroku addons:add sendgrid:starter
-    ```
+3. If deploying to Heroku, add these environmental variables to your production environment: `$ heroku config:set RAILS_SECRET_KEY_BASE=1234abcd`
+4. If deploying to Heroku, pick an email provider.  Sendgrid is easy: `$ heroku addons:add sendgrid:starter`
 5.  Copy the new sendgrid configuration variables to your `/config/application.yml` file.
 6. Add the following to your `config/environment.rb` file:
 
@@ -56,6 +52,15 @@ Installation
     }
     ```
 7. As of v3.1.0, Devise requires the secret key be available during asset precompilation.  Heroku's Cedar stack doesn't support this by default, but you can enable it using the `$ heroku labs:enable user-env-compile -a <appname>` command.
+
+
+TODO
+====
+
+* Board admins
+* Submitted links are currently not displayed
+* Sorting algorithms (currently sorts by most recent)
+* Private messaging
 
 
 Credits
